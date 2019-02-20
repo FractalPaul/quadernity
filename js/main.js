@@ -257,9 +257,11 @@ function paraFunc1(t) {
 }
 
 function paraFunc2(t) {
+    // math comes from : http://mathworld.wolfram.com/TeardropCurve.html
     return Math.cos(t);
 }
 
 function paraFunc3(t) {
+    // math comes from : http://mathworld.wolfram.com/TeardropCurve.html
     return Math.sin(t) * Math.pow(Math.sin(t / 2), 2);
 }
