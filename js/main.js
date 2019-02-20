@@ -2,6 +2,11 @@ if (WEBGL.isWebGLAvailable() === false) {
     document.body.appendChild(WEBGL.getWebGLErrorMessage());
 }
 
+// *************************************************************************************************************
+// Can look at the tear drop equation on: http://paulbourke.net/geometry/teardrop/
+// Used the equation for the Tear Drop parametric equation from: http://mathworld.wolfram.com/TeardropCurve.html
+// *************************************************************************************************************
+
 var camera, scene, renderer, stats, controls;
 var xFlip = 1; // factor for flipping across the axis for the Parametric Equations.
 var paraFlip = 1; // factor for flipping across the axis for the Parametric Equations.
