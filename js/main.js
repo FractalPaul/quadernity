@@ -123,13 +123,13 @@ function render() {
 
 function drawParametricGeometry() {
     var sizeFactor = 50;
-    var angleFactor = 12;
+    var angleFactor = 18;
     var group = new THREE.Group();
-var geoSlices = 10;
-var geoStacks = 30;
-  var blueColor = 0x1f3fd4;
-  var greenColor = 0x8cd2b;
-  var gap = 5;
+    var geoSlices = 10;
+    var geoStacks = 50;
+    var blueColor = 0x1f3fd4;
+    var greenColor = 0x8cd2b;
+    var gap = 5;
     var matBlueBack = new THREE.MeshStandardMaterial({
         color: blueColor,
         side: THREE.BackSide
@@ -148,7 +148,7 @@ var geoStacks = 30;
         side: THREE.BackSide
     });
     var geometry, object;
-  
+
     // one quarter of the Quadternity. (1 side outside)
     geometry = new THREE.ParametricBufferGeometry(parametricQuad1, geoSlices, geoStacks);
     object = new THREE.Mesh(geometry, matBlueBack);
@@ -172,7 +172,7 @@ var geoStacks = 30;
     object.rotateY(-Math.PI / angleFactor);
     object.translateZ(-gap);
     group.add(object);
- 
+
     // 2nd Quarter of the Quadternity (1 side inside).
     geometry = new THREE.ParametricBufferGeometry(parametricQuad2, geoSlices, geoStacks);
     object = new THREE.Mesh(geometry, matBlueFront);
@@ -181,7 +181,7 @@ var geoStacks = 30;
     object.translateZ(-gap);
     group.add(object);
 
-   
+
     // 3rd quarter of the Quadternity (2nd side inside)
     geometry = new THREE.ParametricBufferGeometry(parametricQuad3, geoSlices, geoStacks);
     object = new THREE.Mesh(geometry, matBlueBack);
@@ -213,7 +213,7 @@ var geoStacks = 30;
     object.rotateY(Math.PI / angleFactor);
     object.translateZ(gap);
     group.add(object);
-  
+
 
     scene.add(group);
 
