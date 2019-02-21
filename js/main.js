@@ -25,12 +25,19 @@ function init() {
     //
     var ambientLight = new THREE.AmbientLight(0xcccccc, 0.99);
     scene.add(ambientLight);
-    var pointLight = new THREE.PointLight(0xffffff, 0.6);
+    var pointLight = new THREE.PointLight(0xffffff, 0.7);
 
     camera.add(pointLight);
 
     scene.add(camera);
-    //
+    
+    var lightLeft = new THREE.PointLight( 0xff0000, 1, 100 );
+lightLeft.position.set(-50 , 350, 0 );
+scene.add( lightLeft );
+
+var lightRight = new THREE.PointLight( 0xff0000, 1, 100 );
+lightRight.position.set(50 , 350, 0 );
+scene.add( lightRight );
 
     //drawBox();
     drawParametricGeometry();
