@@ -23,9 +23,9 @@ function init() {
     scene = new THREE.Scene();
 
     //
-    var ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+    var ambientLight = new THREE.AmbientLight(0xcccccc, 0.99);
     scene.add(ambientLight);
-    var pointLight = new THREE.PointLight(0xffffff, 0.8);
+    var pointLight = new THREE.PointLight(0xffffff, 0.6);
 
     camera.add(pointLight);
 
