@@ -10,6 +10,17 @@ if (WEBGL.isWebGLAvailable() === false) {
 var camera, scene, renderer, stats, controls;
 var xFlip = 1; // factor for flipping across the axis for the Parametric Equations.
 var paraFlip = 1; // factor for flipping across the axis for the Parametric Equations.
+var cfa = 0.92;  // Angle of the 1st ellipse.
+var cfb = 0.92; // Angle of the 2nd ellipse.
+var osb = 1.25;
+var osa = 1.9;
+var xOffset = 0.4;
+var ellipseBLen = 0.7; // ellipse axis length for elongation.  B axis length.
+var ellipseALen = 1.2; // ellipse axis length for elongation.  A Axis length.
+//var startAngleA = 0.2; // starting angle for one side of ellipse
+var endAngleB = 1.85; // Ending angle for 2nd side of ellipse.
+var TWOPI = 2 * Math.PI;
+//var translateFactorA = TWOPI - startAngleA;
 
 init();
 scaleCamera();
@@ -30,14 +41,14 @@ function init() {
     camera.add(pointLight);
 
     scene.add(camera);
-    
-    var lightLeft = new THREE.PointLight( 0xff0000, 1, 100 );
-lightLeft.position.set(-50 , 350, 0 );
-scene.add( lightLeft );
 
-var lightRight = new THREE.PointLight( 0xff0000, 1, 100 );
-lightRight.position.set(50 , 350, 0 );
-scene.add( lightRight );
+    var lightLeft = new THREE.PointLight(0xff0000, 1, 100);
+    lightLeft.position.set(-50, 350, 0);
+    scene.add(lightLeft);
+
+    var lightRight = new THREE.PointLight(0xff0000, 1, 100);
+    lightRight.position.set(50, 350, 0);
+    scene.add(lightRight);
 
     //drawBox();
     drawParametricGeometry();
@@ -136,7 +147,7 @@ function drawParametricGeometry() {
     var geoStacks = 50;
     var blueColor = 0x1f3fd4;
     var greenColor = 0x8cd2b;
-    var gap = 5;
+    var gap = 0;
     var matBlueBack = new THREE.MeshStandardMaterial({
         color: blueColor,
         side: THREE.BackSide
@@ -221,7 +232,6 @@ function drawParametricGeometry() {
     object.translateZ(gap);
     group.add(object);
 
-
     scene.add(group);
 
     group.rotateX(Math.PI / 2);
@@ -229,67 +239,64 @@ function drawParametricGeometry() {
     group.translateX(sizeFactor);
 }
 
-function parametricQuad(u, t, target) {
-    //u *= Math.PI;
-    var v = t * 2 * Math.PI;
+// function parametricQuad(u, t, target) {
+//     //u *= Math.PI;
+//     var v = t * 2 * Math.PI;
+//     var x, y, z;
 
-    var x, y, z;
+//     y = xFlip * v * paraFunc1(u);
+//     x = paraFunc2(v);
+//     z = paraFlip * paraFunc3(v);
 
-    y = xFlip * v * paraFunc1(u);
-    x = paraFunc2(v);
-    z = paraFlip * paraFunc3(v);
+//     target.set(x, y, z);
+// }
 
-    target.set(x, y, z);
-}
 
 function parametricQuad1(u, t, target) {
     //u *= Math.PI;
-    var v = t * 2 * Math.PI;
-
+    var v = t * endAngleB * Math.PI;
     var x, y, z;
 
-    y = v * paraFunc1(u);
-    x = paraFunc2(v);
-    z = paraFunc3(v);
+    y = t * TWOPI * paraFunc1(u);
+    x = ellipseALen * paraFunc2(v) ;
+    z = ellipseBLen * paraFunc3(v)-xOffset;
     x -= 1;
     target.set(x, y, z);
 }
 
 function parametricQuad2(u, t, target) {
     //u *= Math.PI;
-    var v = t * 2 * Math.PI;
-
+    var v = t * endAngleB * Math.PI;
     var x, y, z;
 
-    y = -v * paraFunc1(u);
-    x = paraFunc2(v);
-    z = paraFunc3(v);
+    y = -t * TWOPI * paraFunc1(u);
+    x = ellipseALen * paraFunc2(v) ;
+    z = ellipseBLen * paraFunc3(v)- xOffset;
     x -= 1;
+
     target.set(x, y, z);
 }
 
 function parametricQuad3(u, t, target) {
     //u *= Math.PI;
-    var v = t * 2 * Math.PI;
-
+    var v = t * endAngleB * Math.PI;
     var x, y, z;
 
-    y = v * paraFunc1(u);
-    x = paraFunc2(v);
-    z = -paraFunc3(v);
+    y = t * TWOPI * paraFunc1(u);
+    x = ellipseALen * paraFunc2(v) ;
+    z = -ellipseBLen * paraFunc3(v)+xOffset;
     x -= 1;
     target.set(x, y, z);
 }
 
 function parametricQuad4(u, t, target) {
     //u *= Math.PI;
-    var v = t * 2 * Math.PI;
-
+    var v = t * endAngleB * Math.PI;
     var x, y, z;
 
-    y = -v * paraFunc1(u);
-    x = paraFunc2(v);
-    z = -paraFunc3(v);
+    y = -t * TWOPI * paraFunc1(u);
+    x = ellipseALen * paraFunc2(v) ;
+    z = -ellipseBLen * paraFunc3(v)+ xOffset;
     x -= 1;
     target.set(x, y, z);
 }
@@ -298,12 +305,12 @@ function paraFunc1(t) {
     return t / 6; //Math.sin(t) * Math.sin(t / 2);
 }
 
-function paraFunc2(t) {
-    // math comes from : http://mathworld.wolfram.com/TeardropCurve.html
-    return Math.cos(t);
+function paraFunc3(t) {
+
+    return cfa * Math.sin(t + osb) - Math.cos(t + osb);
 }
 
-function paraFunc3(t) {
-    // math comes from : http://mathworld.wolfram.com/TeardropCurve.html
-    return Math.sin(t) * Math.pow(Math.sin(t / 2), 2);
+function paraFunc2(t) {
+
+    return cfb * Math.sin(t + osa);
 }
