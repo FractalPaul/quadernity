@@ -1,112 +1,89 @@
-var vacuumParms = {
-    numSpheres: 60,
-    color: 0x2f7dbd,
-    opacity: 0.2,
-    zoom: 5,
-    radius: 0.5,
+var configParms = {
+    cfa: 0.92,  // Angle of the 1st ellipse. Min: 0 - Max: Pi
+    cfb: 0.92, // Angle of the 2nd ellipse. Min: 0 - Max: Pi
+    osb: 1.25, // Min: 1 - Max: 1.9
+    osa: 1.9, // Min: 1 - Max: 1.9
+    xOffset: 0.4, // Min: 0 - Max: 3 X Offset distance between the two ellipses.
+    ellipseBLen: 0.7, // ellipse axis length for elongation.  B axis length.  Min: 0.1 - Max: 3
+    ellipseALen: 1.2, // ellipse axis length for elongation.  A Axis length. Min: 0.1 - Max: 3
+    endAngleB: 1.85, // Ellipse angle at the top for gap width.
     rotateAnimation: false,
     rotateReset: false,
-    roughness: 0.4,
-    metalness: 0.4,
-    depthTest: false,
-    depthWrite: true,
-    wireframe: false,
-    wireframeline: 0.2,
-    drawLines: true,
-    drawPoints: true,
-    firstLayer: true,
-    secondLayer: true,
-}
+    drawAxis: true,
+    blueColor: 0x1f3fd4,
+    greenColor: 0x8cd2b,
+};
 
 window.onload = function () {
-
-    _gui.add(vacuumParms, 'numSpheres', 0, 338, 1)
-        .name("# of Spheres")
-        .onChange(function (newValue) { // Listen to changes within the _gui
-            //console.log("Value changed to:  ", newValue);
-            showSpheres(vacuumParms.numSpheres);
-        })
-        .listen(); // Listen to changes outside the gui - GUI will update when changed from outside
-
-    _gui.addColor(vacuumParms, 'color')
+    var ellipseFolder = _gui.addFolder('Ellipse');
+    ellipseFolder.add(configParms, 'cfa').name('1st Angle').min(0).max(Math.PI).step(0.1)
         .onChange(function (newValue) {
-            _meshMaterial.color.set(newValue);
-        })
-        .listen();
+            drawGeometry();
 
-    _gui.add(vacuumParms, 'zoom', 1, 10)
+        });
+    ellipseFolder.add(configParms, 'cfb').name('2nd Angle').min(0).max(Math.PI).step(0.1)
         .onChange(function (newValue) {
-            scaleCamera();
-        })
-        .listen();
+            drawGeometry();
+        });
+    ellipseFolder.add(configParms, 'osa').name('1st osb').min(0).max(Math.PI).step(0.1)
+        .onChange(function (newValue) {
+            drawGeometry();
+        });
+    ellipseFolder.add(configParms, 'osb').name('2nd osb').min(0).max(Math.PI).step(0.1)
+        .onChange(function (newValue) {
+            drawGeometry();
+        });
+    ellipseFolder.add(configParms, 'xOffset').name('Seperation').min(0).max(2).step(0.1)
+        .onChange(function (newValue) {
+            drawGeometry();
+        });
+    ellipseFolder.add(configParms, 'ellipseALen').name('A Length').min(0.1).max(2).step(0.1)
+        .onChange(function (newValue) {
+            drawGeometry();
+        });
 
-    _gui.add(vacuumParms, 'opacity', 0, 1)
+    ellipseFolder.add(configParms, 'ellipseBLen').name('B Length').min(0.1).max(2).step(0.1)
         .onChange(function (newValue) {
-            //console.log("Num Spheres changed to: ",newValue);
-            _meshMaterial.opacity = vacuumParms.opacity;
-            //drawGeometry();
-        })
-        .listen(); // Listen to changes outside the gui - GUI will update when changed from outside
-    _gui.add(vacuumParms, 'roughness', 0, 1)
-        .name("Reflectivity")
-        .onChange(function (newValue) {
-            _meshMaterial.roughness = vacuumParms.roughness;
-        })
-        .listen();
+            drawGeometry();
+        });
 
-    _gui.add(vacuumParms, 'metalness', 0, 1)
-        .name("Shine")
+    ellipseFolder.add(configParms, 'endAngleB').name('Top Gap').min(1.2).max(2).step(0.1)
         .onChange(function (newValue) {
-            _meshMaterial.metalness = vacuumParms.metalness;
-        })
-        .listen();
+            drawGeometry();
+        });
 
-    _gui.add(vacuumParms, 'depthTest')
-        .name("Depth Overlay")
+    ellipseFolder.addColor(configParms, 'blueColor')
         .onChange(function (newValue) {
-            _meshMaterial.depthTest = vacuumParms.depthTest;
-        })
-        .listen();
+            //_meshMaterial.color.set(newValue);
+        });
 
-    _gui.add(vacuumParms, 'depthWrite')
-        .name("Depth Write")
+    ellipseFolder.addColor(configParms, 'greenColor')
         .onChange(function (newValue) {
-            _meshMaterial.depthWrite = vacuumParms.depthWrite;
-        })
-        .listen();
+            //_meshMaterial.color.set(newValue);
+        });
 
-    _gui.add(vacuumParms, 'wireframe')
-        .name('Wireframe')
-        .onChange(function (newValue) {
-            _meshMaterial.wireframe = vacuumParms.wireframe;
-        })
-        .listen();
 
-    _gui.add(vacuumParms, 'rotateAnimation')
+    var rotateFolder = _gui.addFolder('Rotation');
+    rotateFolder.add(configParms, 'rotateAnimation')
         .name('Animate Rotation ')
         .onChange(function (newValue) {
 
         })
         .listen();
 
-    _gui.add(vacuumParms, 'rotateReset')
+    rotateFolder.add(configParms, 'rotateReset')
         .name('Rotation Reset')
         .onChange(function (newValue) {
-            if (vacuumParms.rotateReset) {
+            if (configParms.rotateReset) {
                 rotationReset();
-                vacuumParms.rotateReset = false;
+                configParms.rotateReset = false;
             }
         })
-        .listen();
-    _gui.add(vacuumParms, 'drawLines')
-        .name("Draw Lines")
-        .onChange(function(newValue) {
-            showLines(newValue);
+
+    var miscFolder = _gui.addFolder('Misc..');
+    miscFolder.add(configParms, 'drawAxis')
+        .name("Draw Axis")
+        .onChange(function (newValue) {
+            drawGeometry();
         })
-        .listen();
-    _gui.add(vacuumParms, 'drawPoints')
-        .name('Draw Points')
-        .onChange(function(newValue){
-showPoints(newValue);
-        });
 };

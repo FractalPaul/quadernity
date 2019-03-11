@@ -8,52 +8,63 @@ if (WEBGL.isWebGLAvailable() === false) {
 // *************************************************************************************************************
 
 var camera, scene, renderer, stats, controls;
-var xFlip = 1; // factor for flipping across the axis for the Parametric Equations.
-var paraFlip = 1; // factor for flipping across the axis for the Parametric Equations.
-var cfa = 0.92;  // Angle of the 1st ellipse.
-var cfb = 0.92; // Angle of the 2nd ellipse.
-var osb = 1.25;
-var osa = 1.9;
-var xOffset = 0.4;
-var ellipseBLen = 0.7; // ellipse axis length for elongation.  B axis length.
-var ellipseALen = 1.2; // ellipse axis length for elongation.  A Axis length.
-//var startAngleA = 0.2; // starting angle for one side of ellipse
-var endAngleB = 1.85; // Ending angle for 2nd side of ellipse.
+var _gui = new dat.GUI();
+//var xFlip = 1; // factor for flipping across the axis for the Parametric Equations.
+//var paraFlip = 1; // factor for flipping across the axis for the Parametric Equations.
+// var cfa = 0.92;  // Angle of the 1st ellipse.
+// var cfb = 0.92; // Angle of the 2nd ellipse.
+// var osb = 1.25;
+// var osa = 1.9;
+// var xOffset = 0.4;
+// var ellipseBLen = 0.7; // ellipse axis length for elongation.  B axis length.
+// var ellipseALen = 1.2; // ellipse axis length for elongation.  A Axis length.
+//var endAngleB = 1.80; // Ending angle for 2nd side of ellipse.
 var TWOPI = 2 * Math.PI;
-//var translateFactorA = TWOPI - startAngleA;
 
-init();
+initCamera();
+drawGeometry();
+setupRender();
 scaleCamera();
 
 animate();
 
-function init() {
-    var container = document.getElementById('container');
+function initCamera() {
+    camera = null;
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
     camera.position.y = 400;
+}
+
+function drawGeometry() {
+    scene = null;
+
     scene = new THREE.Scene();
-
     //
-    var ambientLight = new THREE.AmbientLight(0xcccccc, 0.99);
+    var ambientLight = new THREE.AmbientLight(0xcccccc, 1.09);
     scene.add(ambientLight);
-    var pointLight = new THREE.PointLight(0xffffff, 0.7);
+    // var pointLight = new THREE.PointLight(0xffffff, 0.7);
 
-    camera.add(pointLight);
+    // camera.add(pointLight);
 
     scene.add(camera);
 
-    var lightLeft = new THREE.PointLight(0xff0000, 1, 100);
-    lightLeft.position.set(-50, 350, 0);
+    var lightLeft = new THREE.PointLight(0xcccccc, 1, 100);
+    lightLeft.position.set(-50, 300, 0);
     scene.add(lightLeft);
 
     var lightRight = new THREE.PointLight(0xff0000, 1, 100);
-    lightRight.position.set(50, 350, 0);
+    lightRight.position.set(50, 300, 0);
     scene.add(lightRight);
 
     //drawBox();
     drawParametricGeometry();
-    drawAxis();
+    if (configParms.drawAxis)
+        drawAxis();
+}
 
+function setupRender() {
+    var container = document.getElementById('container');
+
+    renderer = null;
     renderer = new THREE.WebGLRenderer({
         antialias: true
     });
@@ -68,10 +79,6 @@ function init() {
     window.addEventListener('resize', onWindowResize, false);
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
-
-    //controls.update() must be called after any manual changes to the camera's transform
-    //camera.position.set( 0, 20, 100 );
-    //controls.update();
 }
 
 function onWindowResize() {
@@ -89,6 +96,7 @@ function scaleCamera() {
 }
 
 function drawAxis() {
+
     var lineLen = 70;
     var matLine = new THREE.LineBasicMaterial({
         color: 0x0000ff
@@ -126,8 +134,6 @@ function animate() {
 }
 
 function render() {
-
-
     scene.traverse(function (object) {
         if (object.isMesh === true) {
             object.rotation.x = 0.01;
@@ -143,8 +149,8 @@ function drawParametricGeometry() {
     var sizeFactor = 50;
     var angleFactor = 18;
     var group = new THREE.Group();
-    var geoSlices = 10;
-    var geoStacks = 50;
+    var geoSlices = 20;
+    var geoStacks = 80;
     var blueColor = 0x1f3fd4;
     var greenColor = 0x8cd2b;
     var gap = 0;
@@ -254,24 +260,24 @@ function drawParametricGeometry() {
 
 function parametricQuad1(u, t, target) {
     //u *= Math.PI;
-    var v = t * endAngleB * Math.PI;
+    var v = t * configParms.endAngleB * Math.PI;
     var x, y, z;
 
     y = t * TWOPI * paraFunc1(u);
-    x = ellipseALen * paraFunc2(v) ;
-    z = ellipseBLen * paraFunc3(v)-xOffset;
+    x = configParms.ellipseALen * paraFunc2(v);
+    z = configParms.ellipseBLen * paraFunc3(v) - configParms.xOffset;
     x -= 1;
     target.set(x, y, z);
 }
 
 function parametricQuad2(u, t, target) {
     //u *= Math.PI;
-    var v = t * endAngleB * Math.PI;
+    var v = t * configParms.endAngleB * Math.PI;
     var x, y, z;
 
     y = -t * TWOPI * paraFunc1(u);
-    x = ellipseALen * paraFunc2(v) ;
-    z = ellipseBLen * paraFunc3(v)- xOffset;
+    x = configParms.ellipseALen * paraFunc2(v);
+    z = configParms.ellipseBLen * paraFunc3(v) - configParms.xOffset;
     x -= 1;
 
     target.set(x, y, z);
@@ -279,24 +285,24 @@ function parametricQuad2(u, t, target) {
 
 function parametricQuad3(u, t, target) {
     //u *= Math.PI;
-    var v = t * endAngleB * Math.PI;
+    var v = t * configParms.endAngleB * Math.PI;
     var x, y, z;
 
     y = t * TWOPI * paraFunc1(u);
-    x = ellipseALen * paraFunc2(v) ;
-    z = -ellipseBLen * paraFunc3(v)+xOffset;
+    x = configParms.ellipseALen * paraFunc2(v);
+    z = -configParms.ellipseBLen * paraFunc3(v) + configParms.xOffset;
     x -= 1;
     target.set(x, y, z);
 }
 
 function parametricQuad4(u, t, target) {
     //u *= Math.PI;
-    var v = t * endAngleB * Math.PI;
+    var v = t * configParms.endAngleB * Math.PI;
     var x, y, z;
 
     y = -t * TWOPI * paraFunc1(u);
-    x = ellipseALen * paraFunc2(v) ;
-    z = -ellipseBLen * paraFunc3(v)+ xOffset;
+    x = configParms.ellipseALen * paraFunc2(v);
+    z = -configParms.ellipseBLen * paraFunc3(v) + configParms.xOffset;
     x -= 1;
     target.set(x, y, z);
 }
@@ -306,11 +312,9 @@ function paraFunc1(t) {
 }
 
 function paraFunc3(t) {
-
-    return cfa * Math.sin(t + osb) - Math.cos(t + osb);
+    return configParms.cfa * Math.sin(t + configParms.osb) - Math.cos(t + configParms.osb);
 }
 
 function paraFunc2(t) {
-
-    return cfb * Math.sin(t + osa);
+    return configParms.cfb * Math.sin(t + configParms.osa);
 }
