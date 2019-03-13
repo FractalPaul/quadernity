@@ -10,11 +10,13 @@ if (WEBGL.isWebGLAvailable() === false) {
 var camera, scene, renderer, stats, controls;
 var _gui = new dat.GUI();
 var _groupAxis = new THREE.Group();
+var _groupText = new THREE.Group();
 var _group = new THREE.Group();
 var _matBlueBack;
 var _matBlueFront;
 var _matGreenFront;
 var _matGreenBack;
+var _matText;
 
 //var xFlip = 1; // factor for flipping across the axis for the Parametric Equations.
 //var paraFlip = 1; // factor for flipping across the axis for the Parametric Equations.
@@ -64,8 +66,9 @@ function drawGeometry() {
 
     //drawBox();
     drawParametricGeometry();
-    if (configParms.drawAxis)
-        drawAxis();
+    drawAxis();
+
+    loadFont();
 }
 
 function setupRender() {
@@ -80,8 +83,8 @@ function setupRender() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
-    stats = new Stats();
-    container.appendChild(stats.dom);
+    // stats = new Stats();
+    // container.appendChild(stats.dom);
 
     window.addEventListener('resize', onWindowResize, false);
 
@@ -222,7 +225,6 @@ function drawParametricGeometry() {
     object.translateZ(-gap);
     _group.add(object);
 
-
     // 3rd quarter of the Quadternity (2nd side inside)
     geometry = new THREE.ParametricBufferGeometry(parametricQuad3, geoSlices, geoStacks);
     object = new THREE.Mesh(geometry, _matBlueBack);
@@ -263,13 +265,13 @@ function drawParametricGeometry() {
 }
 
 function setBlueColor(newValue) {
-    _matBlueBack.color .set( newValue);
-    _matBlueFront.color .set(newValue);
+    _matBlueBack.color.set(newValue);
+    _matBlueFront.color.set(newValue);
 }
 
 function setGreenColor(newValue) {
-    _matGreenBack.color.set( newValue);
-    _matGreenFront.color.set( newValue);
+    _matGreenBack.color.set(newValue);
+    _matGreenFront.color.set(newValue);
 }
 
 // function parametricQuad(u, t, target) {
@@ -283,6 +285,75 @@ function setGreenColor(newValue) {
 
 //     target.set(x, y, z);
 // }
+function loadFont() {
+    var loader = new THREE.FontLoader();
+    loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
+       
+        drawText(font);
+    });
+}
+
+function drawText(font) {
+drawText1(font);
+drawText2(font);
+}
+function drawText1(font) {
+    var geometry = new THREE.TextBufferGeometry('Sample Label', {
+        font: font,
+        size: 5,
+        height: 0.4,
+        curveSegments: 12,
+        bevelEnabled: false,
+        bevelThickness: 1,
+        bevelSize: 1,
+        bevelSegments: 1
+    });
+  
+    geometry.computeBoundingBox();
+    geometry.computeVertexNormals();
+    var centerOffset = 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+    _matText = new THREE.MeshBasicMaterial({ color: 0xc7d93e, flatShading: true });
+
+    //var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
+    var textMesh1 = new THREE.Mesh(geometry, _matText);
+
+    textMesh1.position.x = 80;
+    textMesh1.position.z = centerOffset;
+    textMesh1.rotation.y = Math.PI / 2;
+    
+    _groupText.add(textMesh1);
+    scene.add(_groupText);
+}
+
+function drawText2(font) {
+    var geometry = new THREE.TextBufferGeometry('Sample Label', {
+        font: font,
+        size: 5,
+        height: 0.4,
+        curveSegments: 12,
+        bevelEnabled: false,
+        bevelThickness: 1,
+        bevelSize: 1,
+        bevelSegments: 1
+    });
+  
+    geometry.computeBoundingBox();
+    geometry.computeVertexNormals();
+    var centerOffset = 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+    _matText = new THREE.MeshBasicMaterial({ color: 0xc7d93e, flatShading: true });
+
+    //var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
+    var textMesh1 = new THREE.Mesh(geometry, _matText);
+
+    textMesh1.position.x = -80;
+    textMesh1.position.z = -centerOffset;
+    textMesh1.rotation.y = -Math.PI / 2;
+    
+    _groupText.add(textMesh1);
+    scene.add(_groupText);
+}
 
 
 function parametricQuad1(u, t, target) {
