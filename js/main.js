@@ -9,6 +9,13 @@ if (WEBGL.isWebGLAvailable() === false) {
 
 var camera, scene, renderer, stats, controls;
 var _gui = new dat.GUI();
+var _groupAxis = new THREE.Group();
+var _group = new THREE.Group();
+var _matBlueBack;
+var _matBlueFront;
+var _matGreenFront;
+var _matGreenBack;
+
 //var xFlip = 1; // factor for flipping across the axis for the Parametric Equations.
 //var paraFlip = 1; // factor for flipping across the axis for the Parametric Equations.
 // var cfa = 0.92;  // Angle of the 1st ellipse.
@@ -106,7 +113,7 @@ function drawAxis() {
     geoX.vertices.push(new THREE.Vector3(0, 0, 0));
     geoX.vertices.push(new THREE.Vector3(lineLen, 0, 0));
     var xLine = new THREE.Line(geoX, matLine); // blue X-Axis
-    scene.add(xLine);
+    _groupAxis.add(xLine);
 
     var geoY = new THREE.Geometry();
     geoY.vertices.push(new THREE.Vector3(0, 0, 0));
@@ -114,7 +121,7 @@ function drawAxis() {
     var yLine = new THREE.Line(geoY, new THREE.LineBasicMaterial({
         color: 0x00ffff
     })); // cyan Y-Axis
-    scene.add(yLine);
+    _groupAxis.add(yLine);
 
     var geoZ = new THREE.Geometry();
     geoZ.vertices.push(new THREE.Vector3(0, 0, 0));
@@ -122,7 +129,14 @@ function drawAxis() {
     var zLine = new THREE.Line(geoZ, new THREE.LineBasicMaterial({
         color: 0xff0000
     })); // red Z-Axis
-    scene.add(zLine);
+    _groupAxis.add(zLine);
+    scene.add(_groupAxis);
+}
+
+function showAxis(visible) {
+    for (var i = 0; i < _groupAxis.children.length; i++) {
+        _groupAxis.children[i].visible = visible;
+    }
 }
 
 function animate() {
@@ -148,101 +162,114 @@ function render() {
 function drawParametricGeometry() {
     var sizeFactor = 50;
     var angleFactor = 18;
-    var group = new THREE.Group();
+
     var geoSlices = 20;
     var geoStacks = 80;
-    var blueColor = 0x1f3fd4;
-    var greenColor = 0x8cd2b;
+    // var blueColor = 0x1f3fd4;
+    // var greenColor = 0x8cd2b;
     var gap = 0;
-    var matBlueBack = new THREE.MeshStandardMaterial({
-        color: blueColor,
+    _matBlueBack = new THREE.MeshStandardMaterial({
+        color: configParms.blueColor,
         side: THREE.BackSide
     });
-    var matBlueFront = new THREE.MeshStandardMaterial({
-        color: blueColor,
+    _matBlueFront = new THREE.MeshStandardMaterial({
+        color: configParms.blueColor,
         side: THREE.FrontSide
     });
 
-    var matGreenFront = new THREE.MeshStandardMaterial({
-        color: greenColor,
+    _matGreenFront = new THREE.MeshStandardMaterial({
+        color: configParms.greenColor,
         side: THREE.FrontSide
     });
-    var matGreenBack = new THREE.MeshStandardMaterial({
-        color: greenColor,
+    _matGreenBack = new THREE.MeshStandardMaterial({
+        color: configParms.greenColor,
         side: THREE.BackSide
     });
     var geometry, object;
 
+    _group = null;
+    _group = new THREE.Group();
+
     // one quarter of the Quadternity. (1 side outside)
     geometry = new THREE.ParametricBufferGeometry(parametricQuad1, geoSlices, geoStacks);
-    object = new THREE.Mesh(geometry, matBlueBack);
+    object = new THREE.Mesh(geometry, _matBlueBack);
     object.scale.multiplyScalar(sizeFactor);
     object.rotateY(-Math.PI / angleFactor);
     object.translateZ(-gap);
-    group.add(object);
+    _group.add(object);
 
     // 1st Quarter of the Quadternity. (1 side inside).
     geometry = new THREE.ParametricBufferGeometry(parametricQuad1, geoSlices, geoStacks);
-    object = new THREE.Mesh(geometry, matGreenFront);
+    object = new THREE.Mesh(geometry, _matGreenFront);
     object.scale.multiplyScalar(sizeFactor);
     object.rotateY(-Math.PI / angleFactor);
     object.translateZ(-gap);
-    group.add(object);
+    _group.add(object);
 
     // 2nd quarter of the Quadternity (1 side outside)
     geometry = new THREE.ParametricBufferGeometry(parametricQuad2, geoSlices, geoStacks);
-    object = new THREE.Mesh(geometry, matGreenBack);
+    object = new THREE.Mesh(geometry, _matGreenBack);
     object.scale.multiplyScalar(sizeFactor);
     object.rotateY(-Math.PI / angleFactor);
     object.translateZ(-gap);
-    group.add(object);
+    _group.add(object);
 
     // 2nd Quarter of the Quadternity (1 side inside).
     geometry = new THREE.ParametricBufferGeometry(parametricQuad2, geoSlices, geoStacks);
-    object = new THREE.Mesh(geometry, matBlueFront);
+    object = new THREE.Mesh(geometry, _matBlueFront);
     object.scale.multiplyScalar(sizeFactor);
     object.rotateY(-Math.PI / angleFactor);
     object.translateZ(-gap);
-    group.add(object);
+    _group.add(object);
 
 
     // 3rd quarter of the Quadternity (2nd side inside)
     geometry = new THREE.ParametricBufferGeometry(parametricQuad3, geoSlices, geoStacks);
-    object = new THREE.Mesh(geometry, matBlueBack);
+    object = new THREE.Mesh(geometry, _matBlueBack);
     object.scale.multiplyScalar(sizeFactor);
     object.rotateY(Math.PI / angleFactor);
     object.translateZ(gap);
-    group.add(object);
+    _group.add(object);
 
     // 3rd quarter of the Quadternity (2nd side outside)
     geometry = new THREE.ParametricBufferGeometry(parametricQuad3, geoSlices, geoStacks);
-    object = new THREE.Mesh(geometry, matGreenFront);
+    object = new THREE.Mesh(geometry, _matGreenFront);
     object.scale.multiplyScalar(sizeFactor);
     object.rotateY(Math.PI / angleFactor);
     object.translateZ(gap);
-    group.add(object);
+    _group.add(object);
 
     // 4th quarter of the Quadternity (2nd side inside).
     geometry = new THREE.ParametricBufferGeometry(parametricQuad4, geoSlices, geoStacks);
-    object = new THREE.Mesh(geometry, matBlueFront);
+    object = new THREE.Mesh(geometry, _matBlueFront);
     object.scale.multiplyScalar(sizeFactor);
     object.rotateY(Math.PI / angleFactor);
     object.translateZ(gap);
-    group.add(object);
+    _group.add(object);
 
     // 4th quarter of the Quadternity (2nd side outside).
     geometry = new THREE.ParametricBufferGeometry(parametricQuad4, geoSlices, geoStacks);
-    object = new THREE.Mesh(geometry, matGreenBack);
+    object = new THREE.Mesh(geometry, _matGreenBack);
     object.scale.multiplyScalar(sizeFactor);
     object.rotateY(Math.PI / angleFactor);
     object.translateZ(gap);
-    group.add(object);
+    _group.add(object);
 
-    scene.add(group);
+    scene.add(_group);
 
-    group.rotateX(Math.PI / 2);
-    group.rotateY(Math.PI / 2);
-    group.translateX(sizeFactor);
+    _group.rotateX(Math.PI / 2);
+    _group.rotateY(Math.PI / 2);
+    _group.translateX(sizeFactor);
+}
+
+function setBlueColor(newValue) {
+    _matBlueBack.color .set( newValue);
+    _matBlueFront.color .set(newValue);
+}
+
+function setGreenColor(newValue) {
+    _matGreenBack.color.set( newValue);
+    _matGreenFront.color.set( newValue);
 }
 
 // function parametricQuad(u, t, target) {

@@ -19,7 +19,6 @@ window.onload = function () {
     ellipseFolder.add(configParms, 'cfa').name('1st Angle').min(0).max(Math.PI).step(0.1)
         .onChange(function (newValue) {
             drawGeometry();
-
         });
     ellipseFolder.add(configParms, 'cfb').name('2nd Angle').min(0).max(Math.PI).step(0.1)
         .onChange(function (newValue) {
@@ -54,12 +53,12 @@ window.onload = function () {
 
     ellipseFolder.addColor(configParms, 'blueColor')
         .onChange(function (newValue) {
-            //_meshMaterial.color.set(newValue);
+            setBlueColor(newValue);
         });
 
     ellipseFolder.addColor(configParms, 'greenColor')
         .onChange(function (newValue) {
-            //_meshMaterial.color.set(newValue);
+            setGreenColor (newValue);
         });
 
 
@@ -84,6 +83,6 @@ window.onload = function () {
     miscFolder.add(configParms, 'drawAxis')
         .name("Draw Axis")
         .onChange(function (newValue) {
-            drawGeometry();
+            showAxis(newValue);
         })
 };
