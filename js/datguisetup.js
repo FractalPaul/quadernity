@@ -12,6 +12,7 @@ var configParms = {
     drawAxis: true,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
+    textOrientation: false,
 };
 
 window.onload = function () {
@@ -84,5 +85,11 @@ window.onload = function () {
         .name("Draw Axis")
         .onChange(function (newValue) {
             showAxis(newValue);
-        })
+        });
+
+    miscFolder.add(configParms, 'textOrientation')
+        .name('Text Orientation')
+        .onChange(function (newValue) {
+            drawText(_font);
+        });
 };

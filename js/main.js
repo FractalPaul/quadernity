@@ -17,6 +17,7 @@ var _matBlueFront;
 var _matGreenFront;
 var _matGreenBack;
 var _matText;
+var _font;
 
 //var xFlip = 1; // factor for flipping across the axis for the Parametric Equations.
 //var paraFlip = 1; // factor for flipping across the axis for the Parametric Equations.
@@ -147,7 +148,7 @@ function animate() {
 
     render();
 
-    stats.update();
+    //stats.update();
 }
 
 function render() {
@@ -288,17 +289,76 @@ function setGreenColor(newValue) {
 function loadFont() {
     var loader = new THREE.FontLoader();
     loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
-       
+        _font = font;
         drawText(font);
     });
 }
 
 function drawText(font) {
-drawText1(font);
-drawText2(font);
+    var PIhalf = Math.PI / 2;
+
+    scene.remove(_groupText);
+
+    _groupText = null;
+    _groupText = new THREE.Group();
+
+    // Creator label goes on the outside on the Blue.
+    if (configParms.textOrientation)
+        drawTextPos(font, 'Creator', 80, 0, 1, PIhalf, 'z');
+    else
+        drawTextPos(font, 'Creator', 85, 0, 0, 0, 'z');
+
+    // Creatable is on the Green outside of the ellipse.
+    if (configParms.textOrientation)
+        drawTextPos(font, 'Createable', -80, 0, -1, -PIhalf, 'z');
+    else
+        drawTextPos(font, 'Createable', -120, 0, 0, 0, 'z');
+
+    // Creating/OUTforming goes at the bottom where the two intersect to form the crease.
+    drawTextPos(font, 'Creating/OUTforming', -1, -65, 0, 0, 'x');
+
+    // INforming goes at the top in the gap.
+    drawTextPos(font, 'INforming', -1, 65, 0, 0, 'x');
+
+    // INformed goes on the inside of the outside fold on Blue side.
+    if (configParms.textOrientation)
+        drawTextPos(font, 'INformed', -70, 0, 1, PIhalf, 'z');
+    else
+        drawTextPos(font, 'INformed', -70, 0, 0, 0, 'z');
+
+    // INformative goes on the inside of the outside fold on Blue side.
+    if (configParms.textOrientation)
+        drawTextPos(font, 'INformative', 70, 0, -1, -PIhalf, 'z');
+    else
+        drawTextPos(font, 'INformative', 40, 0, 0, 0, 'z');
+
+    // Creative goes on the inside fold on the outside of the blue side.
+    if (configParms.textOrientation)
+        drawTextPos(font, 'Creative', -25, 0, -1, -PIhalf, 'z');
+    else
+        drawTextPos(font, 'Creative', -45, -20, 0, 0, 'z');
+
+    // Created goes on the inside fold on the outside of the green side.
+    if (configParms.textOrientation)
+        drawTextPos(font, 'Created', 25, 0, 1, PIhalf, 'z');
+    else
+        drawTextPos(font, 'Created', 20, -20, 0, 0, 'z');
+
+    // INformable goes on the Inside fold inside on the Blue side.
+    if (configParms.textOrientation)
+        drawTextPos(font, 'INformable', 15, 15, -1, -PIhalf, 'z');
+    else
+        drawTextPos(font, 'INformable', -15, 0, 0, 0, 'z');
+
+    // INformer goes on the inside fold inside on the Green side.
+    if (configParms.textOrientation)
+        drawTextPos(font, 'INformer', -15, 15, 1, PIhalf, 'z');
+    else
+        drawTextPos(font, 'INformer', -18, 20, 0, 0, 'z');
 }
-function drawText1(font) {
-    var geometry = new THREE.TextBufferGeometry('Sample Label', {
+
+function drawTextPos(font, text, pX, pY, pZ, rotY, centerAxis) {
+    var geometry = new THREE.TextBufferGeometry(text, {
         font: font,
         size: 5,
         height: 0.4,
@@ -308,53 +368,24 @@ function drawText1(font) {
         bevelSize: 1,
         bevelSegments: 1
     });
-  
+
     geometry.computeBoundingBox();
     geometry.computeVertexNormals();
-    var centerOffset = 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+    var centerOffset = 0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
 
     _matText = new THREE.MeshBasicMaterial({ color: 0xc7d93e, flatShading: true });
 
-    //var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
     var textMesh1 = new THREE.Mesh(geometry, _matText);
 
-    textMesh1.position.x = 80;
-    textMesh1.position.z = centerOffset;
-    textMesh1.rotation.y = Math.PI / 2;
-    
+    textMesh1.position.x = centerAxis == 'x' ? pX * centerOffset : pX;
+    textMesh1.position.y = centerAxis == 'y' ? pY * centerOffset : pY;
+    textMesh1.position.z = centerAxis == 'z' ? pZ * centerOffset : pZ;
+
+    textMesh1.rotation.y = rotY;
+
     _groupText.add(textMesh1);
     scene.add(_groupText);
 }
-
-function drawText2(font) {
-    var geometry = new THREE.TextBufferGeometry('Sample Label', {
-        font: font,
-        size: 5,
-        height: 0.4,
-        curveSegments: 12,
-        bevelEnabled: false,
-        bevelThickness: 1,
-        bevelSize: 1,
-        bevelSegments: 1
-    });
-  
-    geometry.computeBoundingBox();
-    geometry.computeVertexNormals();
-    var centerOffset = 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
-
-    _matText = new THREE.MeshBasicMaterial({ color: 0xc7d93e, flatShading: true });
-
-    //var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
-    var textMesh1 = new THREE.Mesh(geometry, _matText);
-
-    textMesh1.position.x = -80;
-    textMesh1.position.z = -centerOffset;
-    textMesh1.rotation.y = -Math.PI / 2;
-    
-    _groupText.add(textMesh1);
-    scene.add(_groupText);
-}
-
 
 function parametricQuad1(u, t, target) {
     //u *= Math.PI;
