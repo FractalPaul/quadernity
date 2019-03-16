@@ -9,10 +9,11 @@ var configParms = {
     endAngleB: 1.85, // Ellipse angle at the top for gap width.
     rotateAnimation: false,
     rotateReset: false,
-    drawAxis: true,
+    drawAxis: false,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
     textOrientation: false,
+    labelSet:true
 };
 
 window.onload = function () {
@@ -90,6 +91,12 @@ window.onload = function () {
     miscFolder.add(configParms, 'textOrientation')
         .name('Text Orientation')
         .onChange(function (newValue) {
-            drawText(_font);
+            showLabelSet(configParms.labelSet);
         });
+
+    _gui.add(configParms, 'labelSet')
+        .name('Label Set Toggle')
+        .onChange(function (newValue) {
+            showLabelSet(newValue);
+        })
 };
