@@ -71,6 +71,7 @@ function drawGeometry() {
     //drawBox();
     drawParametricGeometry();
     drawAxis();
+    showAxis(configParms.drawAxis);
 
     loadFont();
 }
@@ -361,8 +362,8 @@ function drawText1(font) {
     _groupText1Flip.add(drawTextPos(font, 5, 'INformable', 15, -0.5, 2, -PIhalf, -PIhalf, 0, 'y'));
 
     // INformer goes on the inside fold inside on the Green side.
-    _groupText1.add(drawTextPos(font,5, 'INformer',-15 , -.5, -2, PIhalf, PIhalf, 0, 'y'));
-    _groupText1Flip.add(drawTextPos(font,5, 'INformer', -15, -0.5, -2, PIhalf, PIhalf, 0, 'y'));
+    _groupText1.add(drawTextPos(font, 5, 'INformer', -15, -.5, -2, PIhalf, PIhalf, 0, 'y'));
+    _groupText1Flip.add(drawTextPos(font, 5, 'INformer', -15, -0.5, -2, PIhalf, PIhalf, 0, 'y'));
 
     scene.add(_groupText1);
     scene.add(_groupText1Flip);
