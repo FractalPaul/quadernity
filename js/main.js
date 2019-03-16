@@ -349,11 +349,11 @@ function drawText1(font) {
     _groupText1Flip.add(drawTextPos(font, 5, 'INformative', 40, 0, 0, 0, 0, 0, 'z'));
 
     // Creative goes on the inside fold on the outside of the blue side.
-    _groupText1.add(drawTextPos(font, 5, 'Creative', -20, -25, -1, 0, -PIhalf, 0, 'z'));
+    _groupText1.add(drawTextPos(font, 5, 'Creative', -17, -25, -1, 0, -PIhalf, 0, 'z'));
     _groupText1Flip.add(drawTextPos(font, 5, 'Creative', -45, -20, 0, 0, 0, 0, 'z'));
 
     // Created goes on the inside fold on the outside of the green side.
-    _groupText1.add(drawTextPos(font, 5, 'Created', 20, -25, 1, 0, PIhalf, 0, 'z'));
+    _groupText1.add(drawTextPos(font, 5, 'Created', 17, -25, 1, 0, PIhalf, 0, 'z'));
     _groupText1Flip.add(drawTextPos(font, 5, 'Created', 20, -20, 0, 0, 0, 0, 'z'));
 
     // INformable goes on the Inside fold inside on the Blue side.
@@ -399,12 +399,12 @@ function drawText2(font) {
     _groupText2.add(drawTextPos(font, 5, 'Interference Patterns', 68, -15, -1, 0, -PIhalf, 0, 'z'));
 
     // Seed/Structure goes on the inside fold on the outside of the blue side.
-    _groupText2.add(drawTextPos(font, 5, 'Seed/', -25, -20, -1, 0, -PIhalf, 0, 'z'));
-    _groupText2.add(drawTextPos(font, 5, 'Structure', -22, -30, -1, 0, -PIhalf, 0, 'z'));
+    _groupText2.add(drawTextPos(font, 5, 'Seed/', -20, -20, -1, 0, -PIhalf, 0, 'z'));
+    _groupText2.add(drawTextPos(font, 5, 'Structure', -17, -30, -1, 0, -PIhalf, 0, 'z'));
 
     // Particular Entity goes on the inside fold on the outside of the green side.
-    _groupText2.add(drawTextPos(font, 5, 'Particular', 25, -20, 1, 0, PIhalf, 0, 'z'));
-    _groupText2.add(drawTextPos(font, 5, 'Entity', 22, -30, 1, 0, PIhalf, 0, 'z'));
+    _groupText2.add(drawTextPos(font, 5, 'Particular', 20, -20, 1, 0, PIhalf, 0, 'z'));
+    _groupText2.add(drawTextPos(font, 5, 'Entity', 17, -30, 1, 0, PIhalf, 0, 'z'));
 
     // Individual Awareness goes on the Inside fold inside on the Blue side. (Vertical text)
     _groupText2.add(drawTextPos(font, 5, 'Individual', 15, -0.5, -2.5, -PIhalf, -PIhalf, 0, 'y'));
