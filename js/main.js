@@ -8,12 +8,15 @@ if (WEBGL.isWebGLAvailable() === false) {
 // *************************************************************************************************************
 
 var camera, scene, renderer, stats, controls;
-var _gui = new dat.GUI();
+var windowWidth = window.innerWidth; // 1244;
+var windowHeight=  window.innerHeight; // 700;
+//var _gui = new dat.GUI();
 var _groupAxis = new THREE.Group();
 var _groupText1 = new THREE.Group();
 var _groupText1Flip = new THREE.Group();
 var _groupText2 = new THREE.Group();
 var _groupText2Flip = new THREE.Group();
+var _groupText3 = new THREE.Group();
 var _group = new THREE.Group();
 var _matBlueBack;
 var _matBlueFront;
@@ -22,16 +25,23 @@ var _matGreenBack;
 var _matText;
 var _font;
 
-//var xFlip = 1; // factor for flipping across the axis for the Parametric Equations.
-//var paraFlip = 1; // factor for flipping across the axis for the Parametric Equations.
-// var cfa = 0.92;  // Angle of the 1st ellipse.
-// var cfb = 0.92; // Angle of the 2nd ellipse.
-// var osb = 1.25;
-// var osa = 1.9;
-// var xOffset = 0.4;
-// var ellipseBLen = 0.7; // ellipse axis length for elongation.  B axis length.
-// var ellipseALen = 1.2; // ellipse axis length for elongation.  A Axis length.
-//var endAngleB = 1.80; // Ending angle for 2nd side of ellipse.
+var configParms = {
+    cfa: 0.92,  // Angle of the 1st ellipse. Min: 0 - Max: Pi
+    cfb: 0.92, // Angle of the 2nd ellipse. Min: 0 - Max: Pi
+    osb: 1.25, // Min: 1 - Max: 1.9
+    osa: 1.9, // Min: 1 - Max: 1.9
+    xOffset: 0.4, // Min: 0 - Max: 3 X Offset distance between the two ellipses.
+    ellipseBLen: 0.7, // ellipse axis length for elongation.  B axis length.  Min: 0.1 - Max: 3
+    ellipseALen: 1.2, // ellipse axis length for elongation.  A Axis length. Min: 0.1 - Max: 3
+    endAngleB: 1.85, // Ellipse angle at the top for gap width.
+    // rotateAnimation: false,
+    // rotateReset: false,
+    drawAxis: false,
+    blueColor: 0x1f3fd4,
+    greenColor: 0x8cd2b,
+    textOrientation: false,
+    labelSet:1
+};
 var TWOPI = 2 * Math.PI;
 var PIhalf = Math.PI / 2;
 
@@ -86,7 +96,7 @@ function setupRender() {
     });
 
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(windowWidth, windowHeight);
     container.appendChild(renderer.domElement);
 
     // stats = new Stats();
@@ -98,11 +108,11 @@ function setupRender() {
 }
 
 function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = windowWidth / windowHeight;
 
     camera.updateProjectionMatrix();
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(windowWidth, windowHeight);
 }
 
 function scaleCamera() {
@@ -146,6 +156,12 @@ function showAxis(visible) {
     for (var i = 0; i < _groupAxis.children.length; i++) {
         _groupAxis.children[i].visible = visible;
     }
+}
+
+function toggleAxis() {
+    configParms.drawAxis= !configParms.drawAxis;
+
+    showAxis(configParms.drawAxis);
 }
 
 function animate() {
@@ -296,13 +312,15 @@ function loadFont() {
     loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
         _font = font;
         drawText1(font);
+        drawText1Flip(font);
         drawText2(font);
-        showLabelSet(true);
+        drawText2Flip(font);
+        showLabelSet(1);
     });
 }
 
 function showLabelSet(labelSet) {
-    if (labelSet) {
+    if (labelSet ===1) {
         if (configParms.textOrientation) {
             makeGroupVisible(_groupText1Flip, true);
             makeGroupVisible(_groupText1, false);
@@ -314,18 +332,20 @@ function showLabelSet(labelSet) {
             makeGroupVisible(_groupText2, false);
             makeGroupVisible(_groupText2Flip, false);
         }
-    } else {
+    } else if (labelSet===2) {
         if (configParms.textOrientation) {
-        makeGroupVisible(_groupText1, false);
-        makeGroupVisible(_groupText1Flip, false);
-        makeGroupVisible(_groupText2, false);
-        makeGroupVisible(_groupText2Flip, true);
+            makeGroupVisible(_groupText1, false);
+            makeGroupVisible(_groupText1Flip, false);
+            makeGroupVisible(_groupText2, false);
+            makeGroupVisible(_groupText2Flip, true);
         } else {
             makeGroupVisible(_groupText1, false);
             makeGroupVisible(_groupText1Flip, false);
             makeGroupVisible(_groupText2, true);
-                makeGroupVisible(_groupText2Flip, false);
+            makeGroupVisible(_groupText2Flip, false);
         }
+    } else if (labelSet ===3) {
+
     }
 }
 
@@ -340,45 +360,70 @@ function drawText1(font) {
     var smallFontSize = 5;
     // Creator label goes on the outside on the Blue.
     _groupText1.add(drawTextPos(font, largeFontSize, 'Creator', 80, 0, 1, 0, PIhalf, 0, 'z'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Creator', 85, 0, 0, 0, 0, 0, 'z'));
 
     // Creatable is on the Green outside of the ellipse.
     _groupText1.add(drawTextPos(font, largeFontSize, 'Createable', -80, 0, -1, 0, -PIhalf, 0, 'z'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Createable', -120, 0, 0, 0, 0, 0, 'z'));
 
     // Creating/OUTforming goes at the bottom where the two intersect to form the crease.
     _groupText1.add(drawTextPos(font, largeFontSize, 'Creating/OUTforming', -1, -65, 0, 0, 0, 0, 'x'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Creating/OUTforming', -1, -65, 0, 0, 0, 0, 'x'));
 
     // INforming goes at the top in the gap.
     _groupText1.add(drawTextPos(font, largeFontSize, 'INforming', -1, 65, 0, 0, 0, 0, 'x'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INforming', -1, 65, 0, 0, 0, 0, 'x'));
 
     // INformed goes on the inside of the outside fold on Blue side.
     _groupText1.add(drawTextPos(font, largeFontSize, 'INformed', -70, 0, 1, 0, PIhalf, 0, 'z'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INformed', -70, 0, 0, 0, 0, 0, 'z'));
 
     // INformative goes on the inside of the outside fold on Blue side.
     _groupText1.add(drawTextPos(font, largeFontSize, 'INformative', 70, 0, -1, 0, -PIhalf, 0, 'z'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INformative', 40, 0, 0, 0, 0, 0, 'z'));
 
     // Creative goes on the inside fold on the outside of the blue side.
-    _groupText1.add(drawTextPos(font, largeFontSize, 'Creative', -23,-1, 3.5, 0, -PIhalf, PIhalf, 'y'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Creative', -45, -20, 0, 0, 0, 0, 'z'));
+    _groupText1.add(drawTextPos(font, largeFontSize, 'Creative', -23, -1, 3.5, 0, -PIhalf, PIhalf, 'y'));
 
     // Created goes on the inside fold on the outside of the green side.
     _groupText1.add(drawTextPos(font, largeFontSize, 'Created', 23, -1, -3.5, 0, PIhalf, PIhalf, 'y'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Created', 20, -20, 0, 0, 0, 0, 'z'));
 
     // INformable goes on the Inside fold inside on the Blue side.
     _groupText1.add(drawTextPos(font, largeFontSize, 'INformable', 15, -.5, 2, -PIhalf, -PIhalf, 0, 'y'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INformable', 15, -0.5, 2, 0, 0, PIhalf, 'y'));
 
     // INformer goes on the inside fold inside on the Green side.
     _groupText1.add(drawTextPos(font, largeFontSize, 'INformer', -15, -.5, -2, PIhalf, PIhalf, 0, 'y'));
-    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INformer', -10, -0.5, -2, 0, 0, PIhalf, 'y'));
 
     scene.add(_groupText1);
+}
+
+function drawText1Flip(font) {
+    var largeFontSize = 7;
+    var smallFontSize = 5;
+    // Creator label goes on the outside on the Blue.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Creator', 85, 0, 0, 0, 0, 0, 'z'));
+
+    // Creatable is on the Green outside of the ellipse.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Createable', -120, 0, 0, 0, 0, 0, 'z'));
+
+    // Creating/OUTforming goes at the bottom where the two intersect to form the crease.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Creating/OUTforming', -1, -65, 0, 0, 0, 0, 'x'));
+
+    // INforming goes at the top in the gap.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INforming', -1, 65, 0, 0, 0, 0, 'x'));
+
+    // INformed goes on the inside of the outside fold on Blue side.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INformed', -70, 0, 0, 0, 0, 0, 'z'));
+
+    // INformative goes on the inside of the outside fold on Blue side.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INformative', 40, 0, 0, 0, 0, 0, 'z'));
+
+    // Creative goes on the inside fold on the outside of the blue side.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Creative', -45, -20, 0, 0, 0, 0, 'z'));
+
+    // Created goes on the inside fold on the outside of the green side.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'Created', 20, -20, 0, 0, 0, 0, 'z'));
+
+    // INformable goes on the Inside fold inside on the Blue side.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INformable', 15, -0.5, 2, 0, 0, PIhalf, 'y'));
+
+    // INformer goes on the inside fold inside on the Green side.
+    _groupText1Flip.add(drawTextPos(font, smallFontSize, 'INformer', -10, -0.5, -2, 0, 0, PIhalf, 'y'));
+
     scene.add(_groupText1Flip);
 }
 
@@ -390,32 +435,64 @@ function drawText2(font) {
     _groupText2.add(drawTextPos(font, largeFontSize, 'Observer', 80, -3, 1, 0, PIhalf, 0, 'z'));
     _groupText2.add(drawTextPos(font, smallFontSize, 'Father Sky', 80, -15, 1, 0, PIhalf, 0, 'z'));
 
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-2, 'Environment/', 80, 10, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-2, 'Observer', 80, -3, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, smallFontSize -2, 'Father Sky', 80, -15, 0, 0, 0, 0, 'z'));
-
     // Raw Substance, Mother as the "waters" is on the Green outside of the ellipse.
     _groupText2.add(drawTextPos(font, largeFontSize, 'Raw Substance', -80, 2, -1, 0, -PIhalf, 0, 'z'));
     _groupText2.add(drawTextPos(font, smallFontSize, 'Mother as the "waters"', -80, -10, -1, 0, -PIhalf, 0, 'z'));
-
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-2, 'Raw Substance', -130, 2, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-1, 'Mother as the "waters"', -134, -10, 0, 0, 0, 0, 'z'));
 
     // Experience, Observer and Observed goes at the bottom where the two intersect to form the crease.
     _groupText2.add(drawTextPos(font, largeFontSize, 'Experience', -1, -60, 0, 0, 0, 0, 'x'));
     _groupText2.add(drawTextPos(font, largeFontSize, 'Observer and Observed', -1, -70, 0, 0, 0, 0, 'x'));
     _groupText2.add(drawTextPos(font, smallFontSize, 'are singled-out', -1, -80, 0, 0, 0, 0, 'x'));
 
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-2, 'Experience', -1, -60, 0, 0, 0, 0, 'x'));
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-2, 'Observer and Observed', -1, -70, 0, 0, 0, 0, 'x'));
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-1, 'are singled-out', -1, -80, 0, 0, 0, 0, 'x'));
-
-
     // Resolution, Observer and Observed, are mingled-in goes at the top in the gap.
     _groupText2.add(drawTextPos(font, largeFontSize, 'Resolution', -1, 80, 0, 0, 0, 0, 'x'));
     _groupText2.add(drawTextPos(font, largeFontSize, 'Observer and Observed', -1, 70, 0, 0, 0, 0, 'x'));
     _groupText2.add(drawTextPos(font, smallFontSize, 'are mingled-in', -1, 63, 0, 0, 0, 0, 'x'));
 
+    // Collective Consciousness, Individual is Unconscious goes on the inside of the outside fold on Blue side.
+    _groupText2.add(drawTextPos(font, largeFontSize, 'Collective', -67, 10, 1, 0, PIhalf, 0, 'z'));
+    _groupText2.add(drawTextPos(font, largeFontSize, 'Consciousness', -70, -3, 1, 0, PIhalf, 0, 'z'));
+    _groupText2.add(drawTextPos(font, smallFontSize, 'Individual is Unconscious', -68, -15, 1, 0, PIhalf, 0, 'z'));
+
+    // Outside Space, Akashic Record, Interference Patterns goes on the inside of the outside fold on Green side.
+    _groupText2.add(drawTextPos(font, largeFontSize, 'Outside Space', 67, 10, -1, 0, -PIhalf, 0, 'z'));
+    _groupText2.add(drawTextPos(font, largeFontSize, 'Akashic Record', 70, -3, -1, 0, -PIhalf, 0, 'z'));
+    _groupText2.add(drawTextPos(font, smallFontSize, 'Interference Patterns', 68, -15, -1, 0, -PIhalf, 0, 'z'));
+
+    // Seed/Structure goes on the inside fold on the outside of the blue side. (vertical)
+    _groupText2.add(drawTextPos(font, smallFontSize, 'Seed/Structure', -23, -20, 0, 0, -PIhalf, PIhalf, 'z'));
+
+    // Particular Entity goes on the inside fold on the outside of the green side.
+    _groupText2.add(drawTextPos(font, smallFontSize, 'Particular Entity', 23, -20, 0, 0, PIhalf, PIhalf, 'z'));
+
+    // Individual Awareness goes on the Inside fold inside on the Blue side. (Vertical text)
+    _groupText2.add(drawTextPos(font, smallFontSize, 'Individual', 15, -0.5, -2.5, -PIhalf, -PIhalf, 0, 'y'));
+    _groupText2.add(drawTextPos(font, smallFontSize, 'Awareness', 15, -0.5, 5, -PIhalf, -PIhalf, 0, 'y'));
+
+    // Inside Space goes on the inside fold inside on the Green side. (vertical text)
+    _groupText2.add(drawTextPos(font, smallFontSize, 'Inside Space', -10, -0.5, 2, PIhalf, PIhalf, 0, 'y'));
+
+    scene.add(_groupText2);
+}
+
+function drawText2Flip(font) {
+    var largeFontSize = 7;
+    var smallFontSize = 5;
+    // Environment/Observer, Father Sky label goes on the outside on the Blue.
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 2, 'Environment/', 80, 10, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 2, 'Observer', 80, -3, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 2, 'Father Sky', 80, -15, 0, 0, 0, 0, 'z'));
+
+    // Raw Substance, Mother as the "waters" is on the Green outside of the ellipse.
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 2, 'Raw Substance', -130, 2, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'Mother as the "waters"', -134, -10, 0, 0, 0, 0, 'z'));
+
+    // Experience, Observer and Observed goes at the bottom where the two intersect to form the crease.
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 2, 'Experience', -1, -60, 0, 0, 0, 0, 'x'));
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 2, 'Observer and Observed', -1, -70, 0, 0, 0, 0, 'x'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'are singled-out', -1, -80, 0, 0, 0, 0, 'x'));
+
+    // Resolution, Observer and Observed, are mingled-in goes at the top in the gap.
     _groupText2Flip.add(drawTextPos(font, largeFontSize, 'Resolution', -1, 80, 0, 0, 0, 0, 'x'));
     _groupText2Flip.add(drawTextPos(font, largeFontSize, 'Observer and Observed', -1, 70, 0, 0, 0, 0, 'x'));
     _groupText2Flip.add(drawTextPos(font, smallFontSize, 'are mingled-in', -1, 63, 0, 0, 0, 0, 'x'));
@@ -425,48 +502,42 @@ function drawText2(font) {
     _groupText2.add(drawTextPos(font, largeFontSize, 'Consciousness', -70, -3, 1, 0, PIhalf, 0, 'z'));
     _groupText2.add(drawTextPos(font, smallFontSize, 'Individual is Unconscious', -68, -15, 1, 0, PIhalf, 0, 'z'));
 
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-3, 'Collective', -65, 20, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-3, 'Consciousness', -70, 10, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-2, 'Individual is Unconscious', -72, 0, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 3, 'Collective', -65, 20, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 3, 'Consciousness', -70, 10, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 2, 'Individual is Unconscious', -72, 0, 0, 0, 0, 0, 'z'));
 
     // Outside Space, Akashic Record, Interference Patterns goes on the inside of the outside fold on Green side.
-    _groupText2.add(drawTextPos(font, largeFontSize, 'Outside Space', 67, 10, -1, 0, -PIhalf, 0, 'z'));
-    _groupText2.add(drawTextPos(font, largeFontSize, 'Akashic Record', 70, -3, -1, 0, -PIhalf, 0, 'z'));
-    _groupText2.add(drawTextPos(font, smallFontSize, 'Interference Patterns', 68, -15, -1, 0, -PIhalf, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 3, 'Outside Space', 32, 20, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, largeFontSize - 3, 'Akashic Record', 33, 10, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 2, 'Interference Patterns', 33, 0, 0, 0, 0, 0, 'z'));
 
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-3, 'Outside Space', 32, 20, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, largeFontSize-3, 'Akashic Record', 33, 10, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-2, 'Interference Patterns', 33, 0, 0, 0, 0, 0, 'z'));
-    
     // Seed/Structure goes on the inside fold on the outside of the blue side. (vertical)
-    _groupText2.add(drawTextPos(font, smallFontSize, 'Seed/Structure', -23, -20, 0, 0, -PIhalf, PIhalf, 'z'));
-    //_groupText2.add(drawTextPos(font, smallFontSize, 'Structure', -17, -30, -1, 0, -PIhalf, 0, 'z'));
-
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-1, 'Seed/', -33, -20, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-1, 'Structure', -30, -30, 0, 0,0, 0, 'z'));
-
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'Seed/', -33, -20, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'Structure', -30, -30, 0, 0, 0, 0, 'z'));
 
     // Particular Entity goes on the inside fold on the outside of the green side.
-    _groupText2.add(drawTextPos(font, smallFontSize, 'Particular Entity', 23, -20,0, 0, PIhalf, PIhalf, 'z'));
-    //_groupText2.add(drawTextPos(font, smallFontSize, 'Entity', 17, -30, 1, 0, PIhalf, PIhalf, 'z'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'Particular', 19, -20, 0, 0, 0, 0, 'z'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'Entity', 15, -30, 0, 0, 0, 0, 'z'));
 
-    _groupText2Flip.add(drawTextPos(font, smallFontSize -1, 'Particular', 19, -20, 0, 0, 0, 0, 'z'));
-    _groupText2Flip.add(drawTextPos(font, smallFontSize -1, 'Entity', 15, -30, 0, 0, 0, 0, 'z'));
-    
     // Individual Awareness goes on the Inside fold inside on the Blue side. (Vertical text)
-    _groupText2.add(drawTextPos(font, smallFontSize, 'Individual', 15, -0.5, -2.5, -PIhalf, -PIhalf, 0, 'y'));
-    _groupText2.add(drawTextPos(font, smallFontSize, 'Awareness', 15, -0.5, 5, -PIhalf, -PIhalf, 0, 'y'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'Individual', 10, -0.5, 0, 0, 0, PIhalf, 'y'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'Awareness', 15, -0.5, 0, 0, 0, PIhalf, 'y'));
 
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-1, 'Individual', 10, -0.5, 0, 0, 0, PIhalf, 'y'));
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-1, 'Awareness', 15, -0.5, 0, 0, 0, PIhalf, 'y'));
-    
     // Inside Space goes on the inside fold inside on the Green side. (vertical text)
-    _groupText2.add(drawTextPos(font, smallFontSize, 'Inside Space', -10, -0.5, 2, PIhalf, PIhalf, 0, 'y'));
+    _groupText2Flip.add(drawTextPos(font, smallFontSize - 1, 'Inside Space', -12, -0.5, 0, 0, 0, PIhalf, 'y'));
 
-    _groupText2Flip.add(drawTextPos(font, smallFontSize-1, 'Inside Space', -12, -0.5,0, 0, 0, PIhalf, 'y'));
-
-    scene.add(_groupText2);
     scene.add(_groupText2Flip);
+}
+
+function drawText3(font) {
+    var largeFontSize = 7;
+    var smallFontSize = 5;
+
+    // Environment/Observer, Father Sky label goes on the outside on the Blue.
+    _groupText3.add(drawTextPos(font, largeFontSize, '../', 80, 10, 1, 0, PIhalf, 0, 'z'));
+    _groupText3.add(drawTextPos(font, largeFontSize, '...', 80, -3, 1, 0, PIhalf, 0, 'z'));
+    _groupText3.add(drawTextPos(font, smallFontSize, '..', 80, -15, 1, 0, PIhalf, 0, 'z'));
+
 }
 
 function drawTextPos(font, fontSize, text, pX, pY, pZ, rotX, rotY, rotZ, centerAxis) {

@@ -1,20 +1,20 @@
-var configParms = {
-    cfa: 0.92,  // Angle of the 1st ellipse. Min: 0 - Max: Pi
-    cfb: 0.92, // Angle of the 2nd ellipse. Min: 0 - Max: Pi
-    osb: 1.25, // Min: 1 - Max: 1.9
-    osa: 1.9, // Min: 1 - Max: 1.9
-    xOffset: 0.4, // Min: 0 - Max: 3 X Offset distance between the two ellipses.
-    ellipseBLen: 0.7, // ellipse axis length for elongation.  B axis length.  Min: 0.1 - Max: 3
-    ellipseALen: 1.2, // ellipse axis length for elongation.  A Axis length. Min: 0.1 - Max: 3
-    endAngleB: 1.85, // Ellipse angle at the top for gap width.
-    rotateAnimation: false,
-    rotateReset: false,
-    drawAxis: false,
-    blueColor: 0x1f3fd4,
-    greenColor: 0x8cd2b,
-    textOrientation: false,
-    labelSet:true
-};
+// var configParms = {
+//     cfa: 0.92,  // Angle of the 1st ellipse. Min: 0 - Max: Pi
+//     cfb: 0.92, // Angle of the 2nd ellipse. Min: 0 - Max: Pi
+//     osb: 1.25, // Min: 1 - Max: 1.9
+//     osa: 1.9, // Min: 1 - Max: 1.9
+//     xOffset: 0.4, // Min: 0 - Max: 3 X Offset distance between the two ellipses.
+//     ellipseBLen: 0.7, // ellipse axis length for elongation.  B axis length.  Min: 0.1 - Max: 3
+//     ellipseALen: 1.2, // ellipse axis length for elongation.  A Axis length. Min: 0.1 - Max: 3
+//     endAngleB: 1.85, // Ellipse angle at the top for gap width.
+//     // rotateAnimation: false,
+//     // rotateReset: false,
+//     drawAxis: false,
+//     blueColor: 0x1f3fd4,
+//     greenColor: 0x8cd2b,
+//     textOrientation: false,
+//     labelSet:1
+// };
 
 window.onload = function () {
     var ellipseFolder = _gui.addFolder('Ellipse');
@@ -64,22 +64,22 @@ window.onload = function () {
         });
 
 
-    var rotateFolder = _gui.addFolder('Rotation');
-    rotateFolder.add(configParms, 'rotateAnimation')
-        .name('Animate Rotation ')
-        .onChange(function (newValue) {
+    // var rotateFolder = _gui.addFolder('Rotation');
+    // rotateFolder.add(configParms, 'rotateAnimation')
+    //     .name('Animate Rotation ')
+    //     .onChange(function (newValue) {
 
-        })
-        .listen();
+    //     })
+    //     .listen();
 
-    rotateFolder.add(configParms, 'rotateReset')
-        .name('Rotation Reset')
-        .onChange(function (newValue) {
-            if (configParms.rotateReset) {
-                rotationReset();
-                configParms.rotateReset = false;
-            }
-        })
+    // rotateFolder.add(configParms, 'rotateReset')
+    //     .name('Rotation Reset')
+    //     .onChange(function (newValue) {
+    //         if (configParms.rotateReset) {
+    //             rotationReset();
+    //             configParms.rotateReset = false;
+    //         }
+    //     })
 
     var miscFolder = _gui.addFolder('Misc..');
     miscFolder.add(configParms, 'drawAxis')
@@ -94,9 +94,9 @@ window.onload = function () {
             showLabelSet(configParms.labelSet);
         });
 
-    _gui.add(configParms, 'labelSet')
+    _gui.add(configParms, 'labelSet').min(1).max(3).step(1)
         .name('Label Set Toggle')
         .onChange(function (newValue) {
-            showLabelSet(newValue);
+            showLabelSet(configParms.labelSet);
         })
 };
