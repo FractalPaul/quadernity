@@ -36,65 +36,111 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-left">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button> -->
-            <span style="font-size: 2em">Quadernity Model</span>
-            <button type="button" class="btn btn-primary btn-lg" style="vertical-align: top;" onclick="showLabelSet(1)">INfo/Create</button>
-            <button type="button" class="btn btn-primary btn-lg" style="vertical-align: top;" onclick="showLabelSet(2)">Observer/Mother Waters</button>
-            <button type="button" class="btn btn-primary btn-lg" style="vertical-align: top;" onclick="showLabelSet(3)">Label Set 3</button>
-        </div>
-
-        <div class="navbar-header float-right">
-            <button type="button" class="btn" onclick="toggleAxis()">Axis</button>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+        <span style="font-size: 2em;">Quadernity Model</span>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item textgreen">
+                    <a href="#" onclick="showLabelSet(1)">Creatable</a>
+                </li>
+                <li class="nav-item textblue">
+                    <a href="#" onclick="showLabelSet(2)">Informed</a>
+                </li>
+                <li class="nav-item textblue">
+                    <a href="#" onclick="showLabelSet(3)">Creative</a>
+                </li>
+                <li class="nav-item textgreen">
+                    <a href="#" onclick="showLabelSet(4)">Informer</a>
+                </li>
+                <li class="nav-item textturq">
+                    <a href="#" onclick="showLabelSet(5)">Creating/OUTforming</a>
+                </li>
+                <li class="nav-item textblue">
+                    <a href="#" onclick="showLabelSet(6)">INformable</a>
+                </li>
+                <li class="nav-item textgreen">
+                    <a href="#" onclick="showLabelSet(7)">Created</a>
+                </li>
+                <li class="nav-item textgreen">
+                    <a href="#" onclick="showLabelSet(8)">Informative</a>
+                </li>
+                <li class="nav-item textblue">
+                    <a href="#" onclick="showLabelSet(9)">Creator</a>
+                </li>
+                <li class="nav-item textturq">
+                    <a href="#" onclick="showLabelSet(10)">INforming</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" onclick="toggleAxis()">Axis</a>
                 </li>
             </ul>
-        </div>/.navbar-collapse -->
+        </div>
     </nav>
 
-    <div id="container"></div>
+    <div id="container" style="float:left;"></div>
+    
+    <div id="textgrid" class="container" style="float:left;max-width:1288px;">
+        <div class="row">
+            <div class="col-2 textgrey" id="textTitle1">PTPR</div>
+            <div class="col-2 textgrey" id="textTitle2">Various Scriptures</div>
+            <div class="col-2 textgrey" id="textTitle3">Consciousness Studies, including Yogic Philosophy</div>
+            <div class="col-2 textgrey" id="textTitle4">Physics according to Measurability by Human Standards</div>
+            <div class="col-2 textgrey" id="textTitle5">Mathematical</div>
+            <div class="col-2 textgrey" id="textTitle6">Domains and Relationships</div>
+        </div>
+        <div class="row">
+            <div class="col-2 textgreen" id="textdesc1">Female Subject Rests in the Ground State.</div>
+            <div class="col-2 textgreen" id="textdesc2">Tao, the Waters, gateway to heaven and earth</div>
+            <div class="col-2 textgreen" id="textdesc3">N/A since patriarchal times</div>
+            <div class="col-2 textgreen" id="textdesc4">Raw Substance, Super-conducting Plasma, Supersaturated Solution,
+                the luminiferous aether, a field of energy</div>
+            <div class="col-2 textgreen" id="textdesc5">√-1 NEITHER +1 nor -1</div>
+            <div class="col-2 textgreen" id="textdesc6">Upper Quadrants, Metaphysical Domain</div>
+        </div>
+    </div>
+    <!-- <div id="textgrid" class="container" style="float:left;">
+        <div class="row" style="max-width:600px;">
+            <div class="col-2 textgrey">PTPR</div>
+            <div class="col-2 textgreen" id="textdesc1">Female Subject Rests in the Ground State.</div>
+        </div>
+        <div class="row" style="max-width:600px;">
+            <div class="col-2 textgrey" id="textTitle2">Various Scriptures</div>
+            <div class="col-2 textgreen" id="textdesc2">Tao, the Waters, gateway to heaven and earth</div>
+        </div>
+        <div class="row" style="max-width:600px;">
+            <div class="col-2 textgrey" id="textTitle3">Consciousness Studies, including Yogic Philosophy</div>
+            <div class="col-2 textgreen" id="textdesc3">N/A since patriarchal times</div>
+        </div>
+        <div class="row" style="max-width:600px;">
+            <div class="col-2 textgrey" id="textTitle4">Physics according to Measurability by Human Standards</div>
+            <div class="col-2 textgreen" id="textdesc4">Raw Substance, Super-conducting Plasma, Supersaturated Solution,
+                the luminiferous aether, a field of energy</div>
+        </div>
+        <div class="row" style="max-width:600px;">
+            <div class="col-2 textgrey" id="textTitle5">Mathematical</div>
+            <div class="col-2 textgreen" id="textdesc5">√-1 NEITHER +1 nor -1</div>
+        </div>
+        <div class="row" style="max-width:600px;">
+            <div class="col-2 textgrey" id="textTitle6">Domains and Relationships</div>
+            <div class="col-2 textgreen" id="textdesc6">Upper Quadrants, Metaphysical Domain</div>
+        </div>
+    </div> -->
+        
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/navbar-fixed-left.min.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <script src="js/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">    
     <script src="js/three.min.js"></script>
     <script src="js/WebGL.js"></script>
-    <!-- <script src="js/stats.min.js"></script> -->
-    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/QuadernityLabels.js"></script>
+    <script src="js/bootstrap.min.js"></script>    
     <script src="js/OrbitControls.js"></script>
     <script src="js/CurveExtras.js"></script>
     <script src="js/ParametricGeometries.js"></script>
-    <!-- <script src="js/dat.gui.min.js"></script>
-    <script src="js/datguisetup.js"></script> -->
+    
     <script src="js/main.js"></script>
 </body>
 
