@@ -16,8 +16,9 @@ if (WEBGL.isWebGLAvailable() === false) {
 // *************************************************************************************************************
 
 var camera, scene, renderer, stats, controls;
-var windowWidth = 1288; // 1244;
-var windowHeight = 800; // 700;
+var heightFactor = 0.75;
+var windowWidth = window.innerWidth;
+var windowHeight = window.innerHeight * heightFactor;
 //var _gui = new dat.GUI();
 var _groupAxis = new THREE.Group();
 var _groupText1 = new THREE.Group();
@@ -119,8 +120,9 @@ function setupRender() {
 }
 
 function onWindowResize() {
-    camera.aspect = windowWidth / windowHeight;
-
+    camera.aspect = 1.61; //windowWidth / windowHeight;
+    windowWidth = window.innerWidth;
+    windowHeight = window.innerHeight * heightFactor;
     camera.updateProjectionMatrix();
 
     renderer.setSize(windowWidth, windowHeight);

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -7,128 +6,76 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style>
-        body {
-            color: #eee;
-            font-family: Monospace;
-            font-size: 13px;
-            text-align: center;
-
-            background-color: #000;
-            margin: 0px;
-            padding: 0px;
-            overflow: hidden;
-        }
-
-        #info {
-            position: absolute;
-
-            top: 0px;
-            width: 100%;
-
-            padding: 5px;
-        }
-
         a {
             color: #0080ff;
         }
     </style>
-
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-left">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <span style="font-size: 2em;">Quadernity Model</span>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item textgreen">
-                    <a href="#" onclick="showLabelSet(1)">Creatable</a>
-                </li>
-                <li class="nav-item textblue">
-                    <a href="#" onclick="showLabelSet(2)">Informed</a>
-                </li>
-                <li class="nav-item textblue">
-                    <a href="#" onclick="showLabelSet(3)">Creative</a>
-                </li>
-                <li class="nav-item textgreen">
-                    <a href="#" onclick="showLabelSet(4)">Informer</a>
-                </li>
-                <li class="nav-item textturq">
-                    <a href="#" onclick="showLabelSet(5)">Creating/OUTforming</a>
-                </li>
-                <li class="nav-item textblue">
-                    <a href="#" onclick="showLabelSet(6)">INformable</a>
-                </li>
-                <li class="nav-item textgreen">
-                    <a href="#" onclick="showLabelSet(7)">Created</a>
-                </li>
-                <li class="nav-item textgreen">
-                    <a href="#" onclick="showLabelSet(8)">Informative</a>
-                </li>
-                <li class="nav-item textblue">
-                    <a href="#" onclick="showLabelSet(9)">Creator</a>
-                </li>
-                <li class="nav-item textturq">
-                    <a href="#" onclick="showLabelSet(10)">INforming</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" onclick="toggleAxis()">Axis</a>
-                </li>
-            </ul>
-        </div>
+    <nav class="nav">
+        <span style="font-size: 2em;margin-left:4px; margin-right:4px;">Quadernity Model</span>
+        <ul class="nav justify-content-center">
+            <li class="nav-item textgreen">
+                <a href="#" onclick="showLabelSet(1)">Creatable</a>
+            </li>
+            <li class="nav-item textblue">
+                <a href="#" onclick="showLabelSet(2)">Informed</a>
+            </li>
+            <li class="nav-item textblue">
+                <a href="#" onclick="showLabelSet(3)">Creative</a>
+            </li>
+            <li class="nav-item textgreen">
+                <a href="#" onclick="showLabelSet(4)">Informer</a>
+            </li>
+            <li class="nav-item textturq">
+                <a href="#" onclick="showLabelSet(5)">Creating/OUTforming</a>
+            </li>
+            <li class="nav-item textblue">
+                <a href="#" onclick="showLabelSet(6)">INformable</a>
+            </li>
+            <li class="nav-item textgreen">
+                <a href="#" onclick="showLabelSet(7)">Created</a>
+            </li>
+            <li class="nav-item textgreen">
+                <a href="#" onclick="showLabelSet(8)">Informative</a>
+            </li>
+            <li class="nav-item textblue">
+                <a href="#" onclick="showLabelSet(9)">Creator</a>
+            </li>
+            <li class="nav-item textturq">
+                <a href="#" onclick="showLabelSet(10)">INforming</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" onclick="toggleAxis()">Axis</a>
+            </li>
+        </ul>
     </nav>
-        
-    <div id="textgrid" class="container" style="float:left;max-width:1288px;">
+    <div id="textgrid" style="height:auto;width:98%;margin:4px;">
         <div class="row">
-            <div class="col-2 textgrey" id="textTitle1">PTPR</div>
-            <div class="col-2 textgrey" id="textTitle2">Various Scriptures</div>
-            <div class="col-2 textgrey" id="textTitle3">Consciousness Studies, including Yogic Philosophy</div>
-            <div class="col-2 textgrey" id="textTitle4">Physics according to Measurability by Human Standards</div>
-            <div class="col-2 textgrey" id="textTitle5">Mathematical</div>
-            <div class="col-2 textgrey" id="textTitle6">Domains and Relationships</div>
+            <div class="col-2 textgrey" id="textTitle1" style="border:1px solid black;">PTPR</div>
+            <div class="col-2 textgrey" id="textTitle2" style="border:1px solid black;">Various Scriptures</div>
+            <div class="col-2 textgrey" id="textTitle3" style="border:1px solid black;">Consciousness Studies, including
+                Yogic Philosophy</div>
+            <div class="col-2 textgrey" id="textTitle4" style="border:1px solid black;">Physics according to
+                Measurability by Human Standards</div>
+            <div class="col-2 textgrey" id="textTitle5" style="border:1px solid black;">Mathematical</div>
+            <div class="col-2 textgrey" id="textTitle6" style="border:1px solid black;">Domains and Relationships</div>
         </div>
         <div class="row">
-            <div class="col-2 textgreen" id="textdesc1">Female Subject Rests in the Ground State.</div>
-            <div class="col-2 textgreen" id="textdesc2">Tao, the Waters, gateway to heaven and earth</div>
-            <div class="col-2 textgreen" id="textdesc3">N/A since patriarchal times</div>
-            <div class="col-2 textgreen" id="textdesc4">Raw Substance, Super-conducting Plasma, Supersaturated Solution,
-                the luminiferous aether, a field of energy</div>
-            <div class="col-2 textgreen" id="textdesc5">√-1 NEITHER +1 nor -1</div>
-            <div class="col-2 textgreen" id="textdesc6">Upper Quadrants, Metaphysical Domain</div>
+            <div class="col-2 textgreen" style="border:1px solid white;" id="textdesc1"></div>
+            <div class="col-2 textgreen" id="textdesc2" style="border:1px solid white;"></div>
+            <div class="col-2 textgreen" id="textdesc3" style="border:1px solid white;"></div>
+            <div class="col-2 textgreen" id="textdesc4" style="border:1px solid white;"></div>
+            <div class="col-2 textgreen" id="textdesc5" style="border:1px solid white;"></div>
+            <div class="col-2 textgreen" id="textdesc6" style="border:1px solid white;"></div>
         </div>
     </div>
-    <!-- <div id="textgrid" class="container" style="float:left;">
-        <div class="row" style="max-width:600px;">
-            <div class="col-2 textgrey">PTPR</div>
-            <div class="col-2 textgreen" id="textdesc1">Female Subject Rests in the Ground State.</div>
-        </div>
-        <div class="row" style="max-width:600px;">
-            <div class="col-2 textgrey" id="textTitle2">Various Scriptures</div>
-            <div class="col-2 textgreen" id="textdesc2">Tao, the Waters, gateway to heaven and earth</div>
-        </div>
-        <div class="row" style="max-width:600px;">
-            <div class="col-2 textgrey" id="textTitle3">Consciousness Studies, including Yogic Philosophy</div>
-            <div class="col-2 textgreen" id="textdesc3">N/A since patriarchal times</div>
-        </div>
-        <div class="row" style="max-width:600px;">
-            <div class="col-2 textgrey" id="textTitle4">Physics according to Measurability by Human Standards</div>
-            <div class="col-2 textgreen" id="textdesc4">Raw Substance, Super-conducting Plasma, Supersaturated Solution,
-                the luminiferous aether, a field of energy</div>
-        </div>
-        <div class="row" style="max-width:600px;">
-            <div class="col-2 textgrey" id="textTitle5">Mathematical</div>
-            <div class="col-2 textgreen" id="textdesc5">√-1 NEITHER +1 nor -1</div>
-        </div>
-        <div class="row" style="max-width:600px;">
-            <div class="col-2 textgrey" id="textTitle6">Domains and Relationships</div>
-            <div class="col-2 textgreen" id="textdesc6">Upper Quadrants, Metaphysical Domain</div>
-        </div>
-    </div> -->
 
-    <div id="container" style="float:left;"></div>
-    
+    <div id="container"></div>
+
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/navbar-fixed-left.min.css">
+    <!-- <link rel="stylesheet" href="css/navbar-fixed-left.min.css"> -->
     <link rel="stylesheet" href="css/main.css">
 
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -136,11 +83,11 @@
     <script src="js/WebGL.js"></script>
 
     <script src="js/QuadernityLabels.js"></script>
-    <script src="js/bootstrap.min.js"></script>    
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script src="js/CurveExtras.js"></script>
     <script src="js/ParametricGeometries.js"></script>
-    
+
     <script src="js/main.js"></script>
 </body>
 
