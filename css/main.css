@@ -1,7 +1,45 @@
-a {padding: 4px; color:white}
-li {padding-top: 4px; padding-bottom: 4px;}
+a {
+    padding: 6px;     
+    color:white
+}
+li {
+    padding-top: 4px; 
+    padding-bottom: 4px;
+}
 
-.textgreen {background-color:  #035913;color: white}
-.textblue {background-color: #0e1b5c;color:white}
-.textturq {background-color: #39a196;color:white}
-.textgrey {background-color: lightgrey}
+.textgreen {
+    background-color:  #035913;
+    color: white
+}
+.textblue {
+    background-color: #0e1b5c;
+    color:white
+}
+.textturq {
+    background-color: #39a196;
+    color:white
+}
+.textgrey {
+    background-color: lightgrey
+}
+
+.blackboarder { 
+    border:1px solid black;
+}
+.whiteboarder {
+    border:1px solid white;
+}
+
+#textgrid {
+    height:auto;
+    width:99%;
+    margin-left:4px;
+    margin-right:4px;
+    padding-left: 4px;
+    border-right: 1px solid white;
+}
+.topbutton {
+    padding-top:10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}

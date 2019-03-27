@@ -17,7 +17,7 @@ if (WEBGL.isWebGLAvailable() === false) {
 
 var camera, scene, renderer, stats, controls;
 var heightFactor = 0.75;
-var windowWidth = window.innerWidth;
+var windowWidth = window.innerWidth-10;
 var windowHeight = window.innerHeight * heightFactor;
 //var _gui = new dat.GUI();
 var _groupAxis = new THREE.Group();
