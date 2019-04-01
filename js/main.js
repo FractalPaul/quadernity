@@ -16,9 +16,10 @@ if (WEBGL.isWebGLAvailable() === false) {
 // *************************************************************************************************************
 
 var camera, scene, renderer, stats, controls;
-var heightFactor = 0.75;
-var windowWidth = window.innerWidth-10;
-var windowHeight = window.innerHeight * heightFactor;
+var heightFactor = 0.9;
+var windowWidth = 0;
+var windowHeight = 0;
+
 //var _gui = new dat.GUI();
 var _groupAxis = new THREE.Group();
 var _groupText1 = new THREE.Group();
@@ -48,7 +49,7 @@ var configParms = {
     endAngleB: 1.85, // Ellipse angle at the top for gap width.
     // rotateAnimation: false,
     // rotateReset: false,
-    drawAxis: false,
+    drawAxis: true,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
     textOrientation: false,
@@ -57,14 +58,16 @@ var configParms = {
 var TWOPI = 2 * Math.PI;
 var PIhalf = Math.PI / 2;
 
-$(document).ready(function () {
+// document ready function call.
+(function () {
     initCamera();
     drawGeometry();
     setupRender();
     scaleCamera();
+    //setTitle();
 
     animate();
-});
+})();
 
 function initCamera() {
     camera = null;
@@ -108,6 +111,7 @@ function setupRender() {
     });
 
     renderer.setPixelRatio(window.devicePixelRatio);
+    setDimension();
     renderer.setSize(windowWidth, windowHeight);
     container.appendChild(renderer.domElement);
 
@@ -119,12 +123,16 @@ function setupRender() {
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 }
 
-function onWindowResize() {
-    camera.aspect = 1.61; //windowWidth / windowHeight;
-    windowWidth = window.innerWidth;
+function setDimension() {
+    windowWidth = window.innerWidth - 15;
     windowHeight = window.innerHeight * heightFactor;
-    camera.updateProjectionMatrix();
+}
 
+function onWindowResize() {
+    setDimension();
+    camera.aspect = 1.61; //windowWidth / windowHeight;
+
+    camera.updateProjectionMatrix();
     renderer.setSize(windowWidth, windowHeight);
 }
 
@@ -134,15 +142,20 @@ function scaleCamera() {
     controls.update();
 }
 
+function setTitle() {
+    var titleEl = document.getElementById('qtitle');
+    titleEl.innerText = categoryTitle;
+}
+
 function drawAxis() {
 
-    var lineLen = 70;
+    var lineLen = 100;
     var matLine = new THREE.LineBasicMaterial({
         color: 0x0000ff
     });
 
     var geoX = new THREE.Geometry();
-    geoX.vertices.push(new THREE.Vector3(0, 0, 0));
+    geoX.vertices.push(new THREE.Vector3(-lineLen, 0, 0));
     geoX.vertices.push(new THREE.Vector3(lineLen, 0, 0));
     var xLine = new THREE.Line(geoX, matLine); // blue X-Axis
     _groupAxis.add(xLine);
@@ -314,29 +327,7 @@ function loadFont() {
     loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
         _font = font;
         drawText1(font);
-
-        showLabelSet(configParms.labelSet);
     });
-}
-
-function showLabelSet(labelSet) {
-    if (labelSet >= 0 && labelSet <= _matText.length) {
-        for (var i = 0; i < _matText.length; i++) {
-            if (i === labelSet - 1) {
-                _matText[i].color.set(_fontColorYellow);
-            } else {
-                _matText[i].color.set(_fontColorWhite);
-            }
-        }
-        for (var i = 0; i < _geoText.length; i++) {
-            if (i === labelSet - 1) {
-                //_geoText[i].size = _largeFontSize;
-            } else {
-                // _geoText[i].size = _smallFontSize;
-            }
-        }
-    }
-    showDescriptions(labelSet);
 }
 
 function makeGroupVisible(group, showIt) {
@@ -346,71 +337,185 @@ function makeGroupVisible(group, showIt) {
 }
 
 function drawText1(font) {
-    // Creatable is on the Green outside of the ellipse.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'Createable', -80, 0, -1, 0, -PIhalf, 0, 'z'));
+    setTitle();
+    var displayLabels = [];
+    for (var i = 0; i < categoryLabels.length; i++) {
+        displayLabels = extractLabels(categoryLabels[i].labels);
 
-    // INformed goes on the inside of the outside fold on Blue side.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'INformed', -70, 0, 1, 0, PIhalf, 0, 'z'));
-
-    // Creative goes on the inside fold on the outside of the blue side.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'Creative', -23, -1, 3.5, 0, -PIhalf, PIhalf, 'y'));
-
-    // INformer goes on the inside fold inside on the Green side.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'INformer', -15, -0.5, -2, PIhalf, PIhalf, 0, 'y'));
-
-    // Creating/OUTforming goes at the bottom where the two intersect to form the crease.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'Creating/OUTforming', -1, -65, 0, 0, 0, 0, 'x'));
-
-    // INformable goes on the Inside fold inside on the Blue side.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'INformable', 15, -0.5, 2, -PIhalf, -PIhalf, 0, 'y'));
-
-    // Created goes on the inside fold on the outside of the green side.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'Created', 23, -1, -3.5, 0, PIhalf, PIhalf, 'y'));
-
-    // INformative goes on the inside of the outside fold on Blue side.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'Informative', 70, 0, -1, 0, -PIhalf, 0, 'z'));
-
-    // Creator label goes on the outside on the Blue.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'Creator', 80, 0, 1, 0, PIhalf, 0, 'z'));
-
-    // INforming goes at the top in the gap.
-    _groupText1.add(drawTextPos(font, _smallFontSize, _fontColorWhite, 'INforming', -1, 65, 0, 0, 0, 0, 'x'));
+        drawTextPos(font, categoryLabels[i].fontsize, _fontColorYellow, displayLabels, i, _groupText1);
+    }
 
     scene.add(_groupText1);
 }
 
-function drawTextPos(font, fontSize, fontColor, text, pX, pY, pZ, rotX, rotY, rotZ, centerAxis) {
-    var geometry = new THREE.TextBufferGeometry(text, {
-        font: font,
-        size: fontSize,
-        height: 0.4,
-        curveSegments: 12,
-        bevelEnabled: false,
-        bevelThickness: 1,
-        bevelSize: 1,
-        bevelSegments: 1
-    });
+function extractLabels(labels) {
+    var dl = [];
+    if (labels != null) {
+        for (var i = 0; i < labels.length; i++) {
+            if (labels[i].length > 0)
+                dl.push(labels[i]);
+        }
+    }
+    return dl;
+}
 
-    geometry.computeBoundingBox();
-    geometry.computeVertexNormals();
-    var centerOffset = 0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+var posParms = [
+    {
+        id: 1,
+        name: 'Left Large Outside Green',
+        vec: [-80, 0, 0],
+        rot: [0, -PIhalf, 0],
+        offset: [0, 0, -1]
+    }, {
+        id: 2,
+        name: 'Left Large Outside Blue',
+        vec: [-70, 0, 0],
+        rot: [0, PIhalf, 0],
+        offset: [0, 0, 1]
+    }, {
+        id: 3,
+        name: 'Left Small Outside Blue',
+        vec: [-23, 0, 3.5],
+        rot: [0, -PIhalf, PIhalf],
+        offset: [0, -1, 0]
+    },
+    {
+        id: 4,
+        name: 'Left Small Inside Green',
+        vec: [-15, 5, -2],
+        rot: [PIhalf, PIhalf, 0],
+        offset: [0, -0.5, 0]
+    },
+    {
+        id: 5,
+        name: 'Bottom',
+        vec: [0, -65, 0],
+        rot: [0, 0, 0],
+        offset: [-1, 0, 0]
+    },
+    {
+        id: 6,
+        name: 'Right Small Inside Blue',
+        vec: [15, 5, 2],
+        rot: [-PIhalf, -PIhalf, 0],
+        offset: [0, -0.5, 0]
+    },
+    {
+        id: 7,
+        name: 'Right Small Outside Green',
+        vec: [23, 0, -3.5],
+        rot: [0, PIhalf, PIhalf],
+        offset: [0, -1, 0]
+    },
+    {
+        id: 8,
+        name: 'Right Large Inside Green',
+        vec: [70, 0, 0],
+        rot: [0, -PIhalf, 0],
+        offset: [0, 0, -1]
+    },
+    {
+        id: 9,
+        name: 'Left Large Outside Blue',
+        vec: [80, 0, 1],
+        rot: [0, PIhalf, 0],
+        offset: [0, 0, 1]
+    },
+    {
+        id: 10,
+        name: 'Top',
+        vec: [0, 70, 0],
+        rot: [0, 0, 0],
+        offset: [-1, 0, 0]
+    }
+];
 
-    var matText = new THREE.MeshBasicMaterial({ color: fontColor, flatShading: true });
-    _matText.push(matText);
-    _geoText.push(geometry);
-    var textMesh1 = new THREE.Mesh(geometry, matText);
+function drawTextPos(font, fontSize, fontColor, texts, posId, group) {
+    for (var i = 0; i < texts.length; i++) {
+        var geometry = new THREE.TextBufferGeometry(texts[i], {
+            font: font,
+            size: fontSize,
+            height: 0.2,
+            curveSegments: 12,
+            bevelEnabled: false,
+            bevelThickness: 1,
+            bevelSize: 1,
+            bevelSegments: 1
+        });
 
-    textMesh1.position.x = centerAxis == 'x' ? pX * centerOffset : pX;
-    textMesh1.position.y = centerAxis == 'y' ? pY * centerOffset : pY;
-    textMesh1.position.z = centerAxis == 'z' ? pZ * centerOffset : pZ;
+        geometry.computeBoundingBox();
+        geometry.computeVertexNormals();
+        var centerX = 0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+        //var centerY = 0.5 * (geometry.boundingBox.max.y - geometry.boundingBox.min.y);
 
-    textMesh1.rotation.x = rotX;
-    textMesh1.rotation.y = rotY;
-    textMesh1.rotation.z = rotZ;
+        var matText = new THREE.MeshBasicMaterial({ color: fontColor, flatShading: true });
+        _matText.push(matText);
+        _geoText.push(geometry);
 
-    textMesh1.visible = true;
+        var textMesh1 = new THREE.Mesh(geometry, matText);
+        var indx = posId;
+        var pX = posParms[indx].vec[0];
+        var pY = posParms[indx].vec[1];
+        var pZ = posParms[indx].vec[2];
+        var offset = posParms[indx].offset;
 
-    return textMesh1;
+        textMesh1.position.x = offset[0] * centerX + pX;
+        textMesh1.position.y = offset[1] * centerX + pY;
+        textMesh1.position.z = offset[2] * centerX + pZ;
+
+        var posOffset = calcOffset(texts.length, i, posId);
+
+        if (offset[2] != 0) {
+            textMesh1.position.y -= posOffset * 1.5 * fontSize;
+        } else if (offset[1] != 0) {
+            textMesh1.position.z -= posOffset * 1.5 * fontSize;
+        } else if (offset[0] != 0) {
+            textMesh1.position.y -= posOffset * 1.5 * fontSize;
+        } else {
+            textMesh1.position.y -= posoffset * 1.5 * fontSize;
+        }
+
+        textMesh1.rotation.x = posParms[indx].rot[0];
+        textMesh1.rotation.y = posParms[indx].rot[1];
+        textMesh1.rotation.z = posParms[indx].rot[2];
+
+        textMesh1.visible = true;
+        group.add(textMesh1);
+    }
+}
+
+function calcOffset(totalLines, indx, posId) {
+    // if total texts is 1 then offset is [0] => f(1, i)
+    // if total texts is 2 then offset is [-2, -1] =>  f(2, i)
+    // if total texts is 3 then offset is [-2.5, -1.5, -0.5] => f(3, i)
+    // if total texts is 4 then offset is [-3, -2, -1, 0] => f(4, i)
+    // if total texts is 5 then offset is [-3.5, -2.5, -1.5,-0.5,0.5] => f(5, i)   
+    // This is for the special case of the labels flipped opposite and therefore need to be reverse sequenced.
+    var flipSequence = posId == 2 || posId == 5;
+
+    if (totalLines == 1 && !flipSequence) {
+        if (posId == 3 || posId == 6) {
+            return -0.3;
+        } 
+        return 0.3;
+    }
+
+    var offset = 0;
+    if (flipSequence)
+        offset = totalLines / 2 - indx;
+    else
+        offset = indx - totalLines / 2 + 0.5;
+
+    // vertical offset since text is rotated vertically then need to offset even more.
+    if (totalLines > 1 && flipSequence) {
+       // offset -= totalLines / 2 - 1.5;
+    } else if (totalLines == 1) {
+        if (posId == 2) {
+            offset+=0.5;
+        } 
+    }
+
+    return offset;
 }
 
 function parametricQuad1(u, t, target) {

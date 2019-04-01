@@ -19,7 +19,7 @@ var categoryLabels = [{
     labels: [
         'Female Subject Rests',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         '',
@@ -33,7 +33,7 @@ var categoryLabels = [{
     labels: [
         'Line 1 long text',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         '',
@@ -47,7 +47,7 @@ var categoryLabels = [{
     labels: [
         'Line 1 long text',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         ''
@@ -60,7 +60,7 @@ var categoryLabels = [{
     labels: [
         'Line 1 long text',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         ''
@@ -73,7 +73,7 @@ var categoryLabels = [{
     labels: [
         'Creating/OUTforming',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         ''
@@ -86,7 +86,7 @@ var categoryLabels = [{
     labels: [
         'Informable',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         ''
@@ -99,7 +99,7 @@ var categoryLabels = [{
     labels: [
         'Created',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         ''
@@ -112,7 +112,7 @@ var categoryLabels = [{
     labels: [
         'Informative',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         ''
@@ -125,7 +125,7 @@ var categoryLabels = [{
     labels: [
         'Creator',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         ''
@@ -138,7 +138,7 @@ var categoryLabels = [{
     labels: [
         'INforming',
         'Line 2 long text offset',
-        'Line 3 long text offset',
+        '',
         '',
         '',
         ''

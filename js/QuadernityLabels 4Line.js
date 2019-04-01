@@ -20,7 +20,7 @@ var categoryLabels = [{
         'Female Subject Rests',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         '',
         ''
@@ -34,7 +34,7 @@ var categoryLabels = [{
         'Line 1 long text',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         '',
         ''
@@ -48,7 +48,7 @@ var categoryLabels = [{
         'Line 1 long text',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         ''
     ]
@@ -61,7 +61,7 @@ var categoryLabels = [{
         'Line 1 long text',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         ''
     ]
@@ -76,7 +76,7 @@ var categoryLabels = [{
         'Line 3 long text offset',
         '',
         '',
-        ''
+        'Line 4 long text offset'
     ]
 },
 {
@@ -87,7 +87,7 @@ var categoryLabels = [{
         'Informable',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         ''
     ]
@@ -100,7 +100,7 @@ var categoryLabels = [{
         'Created',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         ''
     ]
@@ -113,7 +113,7 @@ var categoryLabels = [{
         'Informative',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         ''
     ]
@@ -126,7 +126,7 @@ var categoryLabels = [{
         'Creator',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         ''
     ]
@@ -139,7 +139,7 @@ var categoryLabels = [{
         'INforming',
         'Line 2 long text offset',
         'Line 3 long text offset',
-        '',
+        'Line 4 long text offset',
         '',
         ''
     ]

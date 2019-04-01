@@ -17,7 +17,7 @@ var categoryLabels = [{
     position: 'Outside Green lg L',
     fontsize: 2,
     labels: [
-        'Female Subject Rests',
+        'Line 1 Pos 1',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -31,7 +31,7 @@ var categoryLabels = [{
     position: 'Inside Blue lg L',
     fontsize: 2,
     labels: [
-        'Line 1 long text',
+        'Line 1 Pos 2',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -45,7 +45,7 @@ var categoryLabels = [{
     position: 'Inside Blue sm L',
     fontsize: 2,
     labels: [
-        'Line 1 long text',
+        'Line 1 Pos 3',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -58,7 +58,7 @@ var categoryLabels = [{
     position: 'Inside Green sm L',
     fontsize: 2,
     labels: [
-        'Line 1 long text',
+        'Line 1 Pos 4',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -71,7 +71,7 @@ var categoryLabels = [{
     position: 'Front Seam',
     fontsize: 4,
     labels: [
-        'Creating/OUTforming',
+        'Line 1 Pos 5',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -84,7 +84,7 @@ var categoryLabels = [{
     position: 'Inside Blue sm R',
     fontsize: 2,
     labels: [
-        'Informable',
+        'Line 1 Pos 6',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -97,7 +97,7 @@ var categoryLabels = [{
     position: 'Inside Green sm R',
     fontsize: 4,
     labels: [
-        'Created',
+        'Line 1 Pos 7',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -110,7 +110,7 @@ var categoryLabels = [{
     position: 'Inside Green lg R',
     fontsize: 4,
     labels: [
-        'Informative',
+        'Line 1 Pos 8',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -123,7 +123,7 @@ var categoryLabels = [{
     position: 'Outside Blue lg R',
     fontsize: 4,
     labels: [
-        'Creator',
+        'Line 1 Pos 9',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
@@ -136,7 +136,7 @@ var categoryLabels = [{
     position: 'Back Gap',
     fontsize: 4,
     labels: [
-        'INforming',
+        'Line 1 Pos 10',
         'Line 2 long text offset',
         'Line 3 long text offset',
         '',
