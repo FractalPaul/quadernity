@@ -49,7 +49,7 @@ var configParms = {
     endAngleB: 1.85, // Ellipse angle at the top for gap width.
     // rotateAnimation: false,
     // rotateReset: false,
-    drawAxis: true,
+    drawAxis: false,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
     textOrientation: false,
