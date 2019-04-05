@@ -1,10 +1,10 @@
 "use strict";
 /*
-* Quadernity Model.
-* Math model for geometric shape and text labels to placed in areas on the model.
-* Author: Paul T. Saletzki
-* Date: March 2019
-*/
+ * Quadernity Model.
+ * Math model for geometric shape and text labels to placed in areas on the model.
+ * Author: Paul T. Saletzki
+ * Date: March 2019
+ */
 
 if (WEBGL.isWebGLAvailable() === false) {
     document.body.appendChild(WEBGL.getWebGLErrorMessage());
@@ -39,7 +39,7 @@ var _largeFontSize = 9;
 var _smallFontSize = 7;
 
 var configParms = {
-    cfa: 0.92,  // Angle of the 1st ellipse. Min: 0 - Max: Pi
+    cfa: 0.92, // Angle of the 1st ellipse. Min: 0 - Max: Pi
     cfb: 0.92, // Angle of the 2nd ellipse. Min: 0 - Max: Pi
     osb: 1.25, // Min: 1 - Max: 1.9
     osa: 1.9, // Min: 1 - Max: 1.9
@@ -359,8 +359,7 @@ function extractLabels(labels) {
     return dl;
 }
 
-var posParms = [
-    {
+var posParms = [{
         id: 1,
         name: 'Left Large Outside Green',
         vec: [-80, 0, 0],
@@ -448,7 +447,10 @@ function drawTextPos(font, fontSize, fontColor, texts, posId, group) {
         var centerX = 0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
         //var centerY = 0.5 * (geometry.boundingBox.max.y - geometry.boundingBox.min.y);
 
-        var matText = new THREE.MeshBasicMaterial({ color: fontColor, flatShading: true });
+        var matText = new THREE.MeshBasicMaterial({
+            color: fontColor,
+            flatShading: true
+        });
         _matText.push(matText);
         _geoText.push(geometry);
 
@@ -491,12 +493,12 @@ function calcOffset(totalLines, indx, posId) {
     // if total texts is 4 then offset is [-3, -2, -1, 0] => f(4, i)
     // if total texts is 5 then offset is [-3.5, -2.5, -1.5,-0.5,0.5] => f(5, i)   
     // This is for the special case of the labels flipped opposite and therefore need to be reverse sequenced.
-    var flipSequence = posId == 2 || posId == 5;
+    var flipSequence = (posId == 2 || posId === 2 || posId == 5 || posId === 5);
 
-    if (totalLines == 1 && !flipSequence) {
-        if (posId == 3 || posId == 6) {
+    if ((totalLines == 1 || totalLines === 1) && !flipSequence) {
+        if (posId == 3 || posId === 3 || posId == 6 || posId === 6) {
             return -0.3;
-        } 
+        }
         return 0.3;
     }
 
@@ -508,14 +510,18 @@ function calcOffset(totalLines, indx, posId) {
 
     // vertical offset since text is rotated vertically then need to offset even more.
     if (totalLines > 1 && flipSequence) {
-       // offset -= totalLines / 2 - 1.5;
-    } else if (totalLines == 1) {
-        if (posId == 2) {
-            offset+=0.5;
-        } 
+        // offset -= totalLines / 2 - 1.5;
+    } else if (totalLines == 1 || totalLines === 1) {
+        if (posId == 2 || posId === 2) {
+            offset += 0.5;
+        }
     }
 
     return offset;
+}
+
+function areEqual(t1, t2) {
+    return t1 == t2 || t1 === t2;
 }
 
 function parametricQuad1(u, t, target) {
