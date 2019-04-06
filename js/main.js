@@ -49,7 +49,7 @@ var configParms = {
     endAngleB: 1.85, // Ellipse angle at the top for gap width.
     // rotateAnimation: false,
     // rotateReset: false,
-    drawAxis: false,
+    drawAxis: true,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
     textOrientation: false,
@@ -350,10 +350,12 @@ function drawText1(font) {
 
 function extractLabels(labels) {
     var dl = [];
+    var tmp = '';
     if (labels != null) {
         for (var i = 0; i < labels.length; i++) {
-            if (labels[i].length > 0)
-                dl.push(labels[i]);
+            tmp = labels[i].trim();
+            if (tmp.length > 0)
+                dl.push(tmp);
         }
     }
     return dl;
@@ -466,7 +468,7 @@ function drawTextPos(font, fontSize, fontColor, texts, posId, group) {
         textMesh1.position.z = offset[2] * centerX + pZ;
 
         var posOffset = calcOffset(texts.length, i, posId);
-
+console.log('offset: ' + posOffset );
         if (offset[2] != 0) {
             textMesh1.position.y -= posOffset * 1.5 * fontSize;
         } else if (offset[1] != 0) {
@@ -494,12 +496,17 @@ function calcOffset(totalLines, indx, posId) {
     // if total texts is 5 then offset is [-3.5, -2.5, -1.5,-0.5,0.5] => f(5, i)   
     // This is for the special case of the labels flipped opposite and therefore need to be reverse sequenced.
     var flipSequence = (posId == 2 || posId === 2 || posId == 5 || posId === 5);
+    console.log('total Lines: ' + totalLines + ' Flip Sequence: ' + flipSequence + ' Pos Id: ' + posId);
 
-    if ((totalLines == 1 || totalLines === 1) && !flipSequence) {
+    if ((totalLines == 1 || totalLines === 1) ) {
         if (posId == 3 || posId === 3 || posId == 6 || posId === 6) {
             return -0.3;
         }
+        if (flipSequence) {
+        return 0.0;
+        } else  {
         return 0.3;
+        }
     }
 
     var offset = 0;
