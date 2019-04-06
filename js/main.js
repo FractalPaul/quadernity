@@ -52,7 +52,7 @@ var configParms = {
     drawAxis: true,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
-    maxLines: 1
+    maxLines: 5
 };
 var TWOPI = 2 * Math.PI;
 var PIhalf = Math.PI / 2;
