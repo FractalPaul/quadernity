@@ -52,14 +52,13 @@ var configParms = {
     drawAxis: true,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
-    textOrientation: false,
-    labelSet: 1
+    maxLines: 1
 };
 var TWOPI = 2 * Math.PI;
 var PIhalf = Math.PI / 2;
 
 // document ready function call.
-(function () {
+(function() {
     initCamera();
     drawGeometry();
     setupRender();
@@ -324,7 +323,7 @@ function setGreenColor(newValue) {
 
 function loadFont() {
     var loader = new THREE.FontLoader();
-    loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
+    loader.load('fonts/helvetiker_regular.typeface.json', function(font) {
         _font = font;
         drawText1(font);
     });
@@ -351,10 +350,11 @@ function drawText1(font) {
 function extractLabels(labels) {
     var dl = [];
     var tmp = '';
+
     if (labels != null) {
         for (var i = 0; i < labels.length; i++) {
             tmp = labels[i].trim();
-            if (tmp.length > 0)
+            if (tmp.length > 0 && (i < configParms.maxLines || dl.length < configParms.maxLines))
                 dl.push(tmp);
         }
     }
@@ -468,7 +468,7 @@ function drawTextPos(font, fontSize, fontColor, texts, posId, group) {
         textMesh1.position.z = offset[2] * centerX + pZ;
 
         var posOffset = calcOffset(texts.length, i, posId);
-console.log('offset: ' + posOffset );
+
         if (offset[2] != 0) {
             textMesh1.position.y -= posOffset * 1.5 * fontSize;
         } else if (offset[1] != 0) {
@@ -495,33 +495,32 @@ function calcOffset(totalLines, indx, posId) {
     // if total texts is 4 then offset is [-3, -2, -1, 0] => f(4, i)
     // if total texts is 5 then offset is [-3.5, -2.5, -1.5,-0.5,0.5] => f(5, i)   
     // This is for the special case of the labels flipped opposite and therefore need to be reverse sequenced.
-    var flipSequence = (posId == 2 || posId === 2 || posId == 5 || posId === 5);
-    console.log('total Lines: ' + totalLines + ' Flip Sequence: ' + flipSequence + ' Pos Id: ' + posId);
 
-    if ((totalLines == 1 || totalLines === 1) ) {
-        if (posId == 3 || posId === 3 || posId == 6 || posId === 6) {
+    if ((totalLines == 1 || totalLines === 1)) {
+        if (posId == 6 || posId === 6) {
             return -0.3;
         }
-        if (flipSequence) {
-        return 0.0;
-        } else  {
-        return 0.3;
+        if (posId == 2 || posId === 2) {
+            return 0.4;
+        }
+        if (posId == 3 || posId === 3 || posId == 5 || posId === 5) {
+            return 0.0;
+        } else {
+            return 0.3;
         }
     }
 
     var offset = 0;
-    if (flipSequence)
+    if (posId == 2 || posId === 2) {
         offset = totalLines / 2 - indx;
-    else
+    } else if (posId == 5 || posId === 5) {
+        offset = totalLines / 2 - indx - 0.5;
+    } else if (posId == 6 || posId === 6) {
+        offset = indx - totalLines / 2 + 0.3;
+    } else if (posId == 3 || posId === 3) {
         offset = indx - totalLines / 2 + 0.5;
-
-    // vertical offset since text is rotated vertically then need to offset even more.
-    if (totalLines > 1 && flipSequence) {
-        // offset -= totalLines / 2 - 1.5;
-    } else if (totalLines == 1 || totalLines === 1) {
-        if (posId == 2 || posId === 2) {
-            offset += 0.5;
-        }
+    } else {
+        offset = indx - totalLines / 2 + 0.9;
     }
 
     return offset;
