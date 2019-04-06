@@ -49,10 +49,10 @@ var configParms = {
     endAngleB: 1.85, // Ellipse angle at the top for gap width.
     // rotateAnimation: false,
     // rotateReset: false,
-    drawAxis: true,
+    drawAxis: false,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
-    maxLines: 5
+    maxLines: 6
 };
 var TWOPI = 2 * Math.PI;
 var PIhalf = Math.PI / 2;
