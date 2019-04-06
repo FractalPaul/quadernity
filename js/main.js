@@ -59,6 +59,8 @@ var PIhalf = Math.PI / 2;
 
 // document ready function call.
 (function() {
+    extractURLParms();
+
     initCamera();
     drawGeometry();
     setupRender();
@@ -67,6 +69,16 @@ var PIhalf = Math.PI / 2;
 
     animate();
 })();
+
+function extractURLParms() {
+    var urlParms = window.location.search.substr(1);
+    //console.log('URL Parms: ' + urlParms);
+    if (urlParms && urlParms != null && urlParms.length >0) {
+        var num = Number(urlParms);
+        if (! isNaN(num) && num >0)
+        configParms.maxLines = num;
+    }
+}
 
 function initCamera() {
     camera = null;
