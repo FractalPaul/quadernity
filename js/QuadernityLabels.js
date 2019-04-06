@@ -17,7 +17,7 @@ var categoryLabels = [{
     position: 'Outside Green lg L',
     fontsize: 2,
     labels: [
-        'Creatable',
+        'Line 1 long text POS 1',
         '',
         '',
         '',
@@ -31,7 +31,7 @@ var categoryLabels = [{
     position: 'Inside Blue lg L',
     fontsize: 2,
     labels: [
-        'Line 1 long text',
+        'Line 1 long text POS 2',
         '',
         '',
         '',
@@ -43,9 +43,9 @@ var categoryLabels = [{
 {
     id: 3,
     position: 'Inside Blue sm L',
-    fontsize: 2,
-    labels: [
-        'Line 1 long text',
+    fontsize: 3,
+    labels: [        
+        'Line 1 long Pos 3',
         '',
         '',
         '',
@@ -56,9 +56,9 @@ var categoryLabels = [{
 {
     id: 4,
     position: 'Inside Green sm L',
-    fontsize: 2,
+    fontsize: 4,
     labels: [
-        'Line 1 long text',
+        'Line 1 long POS 4',
         '',
         '',
         '',
@@ -71,7 +71,7 @@ var categoryLabels = [{
     position: 'Front Seam',
     fontsize: 4,
     labels: [
-        'Creating/OUTforming',
+        'Line 1 long text POS 5',
         '',
         '',
         '',
@@ -82,9 +82,10 @@ var categoryLabels = [{
 {
     id: 6,
     position: 'Inside Blue sm R',
-    fontsize: 2,
+    fontsize: 4,
     labels: [
-        'Informable',
+        '  ',
+        'Line 1 long text POS 6',
         '',
         '',
         '',
@@ -97,7 +98,7 @@ var categoryLabels = [{
     position: 'Inside Green sm R',
     fontsize: 4,
     labels: [
-        'Created',
+        'Line 1 long text POS 7',
         '',
         '',
         '',
@@ -110,7 +111,7 @@ var categoryLabels = [{
     position: 'Inside Green lg R',
     fontsize: 4,
     labels: [
-        'Informative',
+        'Line 1 long text POS 8',
         '',
         '',
         '',
@@ -123,7 +124,7 @@ var categoryLabels = [{
     position: 'Outside Blue lg R',
     fontsize: 4,
     labels: [
-        'Creator',
+        'Line 1 long Text POS 9',
         '',
         '',
         '',
@@ -136,7 +137,7 @@ var categoryLabels = [{
     position: 'Back Gap',
     fontsize: 4,
     labels: [
-        'INforming',
+        'LIne 1 text POS 10',
         '',
         '',
         '',
