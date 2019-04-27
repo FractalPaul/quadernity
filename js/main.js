@@ -49,18 +49,16 @@ var configParms = {
     endAngleB: 1.85, // Ellipse angle at the top for gap width.
     // rotateAnimation: false,
     // rotateReset: false,
-    drawAxis: false,
+    drawAxis: true,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
-    maxLines: 6
+    maxLines: 5
 };
 var TWOPI = 2 * Math.PI;
 var PIhalf = Math.PI / 2;
 
 // document ready function call.
 (function() {
-    extractURLParms();
-
     initCamera();
     drawGeometry();
     setupRender();
@@ -69,16 +67,6 @@ var PIhalf = Math.PI / 2;
 
     animate();
 })();
-
-function extractURLParms() {
-    var urlParms = window.location.search.substr(1);
-    //console.log('URL Parms: ' + urlParms);
-    if (urlParms && urlParms != null && urlParms.length >0) {
-        var num = Number(urlParms);
-        if (! isNaN(num) && num >0)
-        configParms.maxLines = num;
-    }
-}
 
 function initCamera() {
     camera = null;
@@ -395,7 +383,7 @@ var posParms = [{
     {
         id: 4,
         name: 'Left Small Inside Green',
-        vec: [-15, 5, -2],
+        vec: [-13, 2, -2],
         rot: [PIhalf, PIhalf, 0],
         offset: [0, -0.5, 0]
     },
@@ -409,7 +397,7 @@ var posParms = [{
     {
         id: 6,
         name: 'Right Small Inside Blue',
-        vec: [15, 5, 2],
+        vec: [13, 2, 2],
         rot: [-PIhalf, -PIhalf, 0],
         offset: [0, -0.5, 0]
     },
@@ -437,7 +425,7 @@ var posParms = [{
     {
         id: 10,
         name: 'Top',
-        vec: [0, 70, 0],
+        vec: [0, 75, 0],
         rot: [0, 0, 0],
         offset: [-1, 0, 0]
     }
@@ -524,13 +512,13 @@ function calcOffset(totalLines, indx, posId) {
 
     var offset = 0;
     if (posId == 2 || posId === 2) {
-        offset = totalLines / 2 - indx;
+        offset = totalLines / 2 - indx + 0.3;
     } else if (posId == 5 || posId === 5) {
-        offset = totalLines / 2 - indx - 0.5;
+        offset = totalLines / 2 - indx - 0.3;
     } else if (posId == 6 || posId === 6) {
-        offset = indx - totalLines / 2 + 0.3;
+        offset = indx - totalLines / 2 - 0.3;
     } else if (posId == 3 || posId === 3) {
-        offset = indx - totalLines / 2 + 0.5;
+        offset = indx - totalLines / 2;
     } else {
         offset = indx - totalLines / 2 + 0.9;
     }

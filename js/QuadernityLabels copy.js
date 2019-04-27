@@ -10,17 +10,18 @@
  * Each Label must be demarked with a comma ,
  * Font Size can be adjusted from 1 up to 25.
  */
-var categoryTitle = 'PTPR Labels';
+var categoryTitle = 'Quadernity title';
 
 var categoryLabels = [{
         id: 1,
         position: 'Outside Green lg L',
         fontsize: 2,
         labels: [
-            'Female Subject Rests',
-            'in the Ground state',
-            'Line 3 long text offset',
-            'Line 4 long text offset',
+            'Line 1 long text POS 1',
+            '',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
             '',
             '',
             ''
@@ -31,10 +32,13 @@ var categoryLabels = [{
         position: 'Inside Blue lg L',
         fontsize: 2,
         labels: [
-            'Male Subject Rests',
-            'in the Ground State',
-            'Line 3 long text offset',
-            'Line 4 long text offset',
+            '',
+            '',
+            '',
+            'Line 1 long text POS 2',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
             '',
             '',
             ''
@@ -43,12 +47,12 @@ var categoryLabels = [{
     {
         id: 3,
         position: 'Inside Blue sm L',
-        fontsize: 2,
+        fontsize: 3,
         labels: [
-            'Male Object Pulled;',
-            'the seed is selected',
-            'from the Ground',
-            'of possibilities.',
+            'Line 1 long Pos 3',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
             '',
             ''
         ]
@@ -56,12 +60,12 @@ var categoryLabels = [{
     {
         id: 4,
         position: 'Inside Green sm L',
-        fontsize: 2,
+        fontsize: 4,
         labels: [
-            'Female Subject Pulls,',
-            'selecting Male seed:',
-            'inception/insemination/',
-            'fertilization',
+            'Line 1 long POS 4',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
             '',
             ''
         ]
@@ -71,23 +75,24 @@ var categoryLabels = [{
         position: 'Front Seam',
         fontsize: 4,
         labels: [
-            'Female Subject Transitions,',
-            '(producing Her Object, gestation).',
-            'Male Subject',
-            'continues to Rest.',
+            'Line 1 long text POS 5',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
             '',
-            'Line 4 long text offset'
+            ''
         ]
     },
     {
         id: 6,
         position: 'Inside Blue sm R',
-        fontsize: 2,
+        fontsize: 4,
         labels: [
-            'Male Object Pulls',
-            '(via physical sensory receptors)',
-            'an impression of the',
-            'Created/OUTformed content.',
+            '  ',
+            'Line 1 long text POS 6',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
             '',
             ''
         ]
@@ -95,12 +100,12 @@ var categoryLabels = [{
     {
         id: 7,
         position: 'Inside Green sm R',
-        fontsize: 2,
+        fontsize: 4,
         labels: [
-            'Female Object',
-            'gets Pushed/OUTformed',
-            '(inside-space and boundary',
-            'of a Particularity)',
+            'Line 1 long text POS 7',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
             '',
             ''
         ]
@@ -110,10 +115,10 @@ var categoryLabels = [{
         position: 'Inside Green lg R',
         fontsize: 4,
         labels: [
-            'Female Subject Pushes',
-            'Object and expands the',
-            'outside-space of a',
-            'Particularity.',
+            'Line 1 long text POS 8',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
             '',
             ''
         ]
@@ -123,11 +128,11 @@ var categoryLabels = [{
         position: 'Outside Blue lg R',
         fontsize: 4,
         labels: [
-            '1) Male Object Transitions,',
-            'producing local reactions;',
-            '2) Male Subject (Environment)',
-            'Pulls/receives data (global',
-            'non-local reconfiguration.)',
+            'Line 1 long Text POS 9',
+            'LIne 2 long text',
+            'Line 3 long text',
+            ' Line 4 long text add it',
+            '',
             ''
         ]
     },
@@ -136,11 +141,11 @@ var categoryLabels = [{
         position: 'Back Gap',
         fontsize: 4,
         labels: [
-            'Female Objects disintegrate',
-            'into Ground (mingled-in).',
-            'Male Subject Transitions,',
-            'self-sacrificing or ',
-            'disrupting the Ground state.',
+            'LIne 1 text POS 10',
+            'LIne 2 long text',
+            'Line 3 long text',
+            'Line 4 long text add it',
+            '',
             ''
         ]
     }
