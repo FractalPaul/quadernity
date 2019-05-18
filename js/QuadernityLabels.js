@@ -10,12 +10,20 @@
  * Each Label must be demarked with a comma ,
  * Font Size can be adjusted from 1 up to 25.
  */
-var categoryTitle = 'PTPR Labels';
 
-var categoryLabels = [{
+var categoryIndex = 1; // Use this value to determine which Category Set (below) is displayed on the model.
+// 1 for the first Label Set, 2 for the second Label Set, 3 for the third, etc...
+
+var categorySets = [{
+    title: 'PTPR Labels',
+    id: 1,
+    positions: [{
         id: 1,
         position: 'Outside Green lg L',
         fontsize: 2,
+        xOffset: 0,
+        yOffset: 0,
+        zOffset:0,
         labels: [
             'Female Subject Rests',
             'in the Ground state',
@@ -30,6 +38,9 @@ var categoryLabels = [{
         id: 2,
         position: 'Inside Blue lg L',
         fontsize: 2,
+        xOffset: 0,
+        yOffset: 0,
+        zOffset:0,
         labels: [
             'Male Subject Rests',
             'in the Ground State',
@@ -44,6 +55,9 @@ var categoryLabels = [{
         id: 3,
         position: 'Inside Blue sm L',
         fontsize: 2,
+        xOffset:0,
+        yOffset: 0,
+        zOffset: 0,
         labels: [
             'Male Object Pulled;',
             'the seed is selected',
@@ -57,6 +71,9 @@ var categoryLabels = [{
         id: 4,
         position: 'Inside Green sm L',
         fontsize: 2,
+        xOffset: 0,
+        yOffset: 0,
+        zOffset:0 ,
         labels: [
             'Female Subject Pulls,',
             'selecting Male seed:',
@@ -70,6 +87,9 @@ var categoryLabels = [{
         id: 5,
         position: 'Front Seam',
         fontsize: 4,
+        xOffset: 0,
+        yOffset: 0,
+        zOffset: 0,
         labels: [
             'Female Subject Transitions,',
             '(producing Her Object, gestation).',
@@ -83,6 +103,9 @@ var categoryLabels = [{
         id: 6,
         position: 'Inside Blue sm R',
         fontsize: 2,
+        xOffset: 0,  
+        yOffset: 0,  // vertical offset
+        zOffset: 0,
         labels: [
             'Male Object Pulls',
             '(via physical sensory receptors)',
@@ -96,6 +119,9 @@ var categoryLabels = [{
         id: 7,
         position: 'Inside Green sm R',
         fontsize: 2,
+        xOffset: 0,
+        yOffset: 0,
+        zOffset: 0,
         labels: [
             'Female Object',
             'gets Pushed/OUTformed',
@@ -109,6 +135,9 @@ var categoryLabels = [{
         id: 8,
         position: 'Inside Green lg R',
         fontsize: 4,
+        xOffset: 0,
+        yOffset: 0,
+        zOffset: 0,
         labels: [
             'Female Subject Pushes',
             'Object and expands the',
@@ -122,6 +151,9 @@ var categoryLabels = [{
         id: 9,
         position: 'Outside Blue lg R',
         fontsize: 4,
+        xOffset: 0,
+        yOffset: 0,
+        zOffset: 0,
         labels: [
             '1) Male Object Transitions,',
             'producing local reactions;',
@@ -135,6 +167,9 @@ var categoryLabels = [{
         id: 10,
         position: 'Back Gap',
         fontsize: 4,
+        xOffset: 0,
+        yOffset: 0,
+        zOffset: 0,
         labels: [
             'Female Objects disintegrate',
             'into Ground (mingled-in).',
@@ -144,4 +179,6 @@ var categoryLabels = [{
             ''
         ]
     }
+]},
+
 ];

@@ -143,7 +143,7 @@ function scaleCamera() {
 
 function setTitle() {
     var titleEl = document.getElementById('qtitle');
-    titleEl.innerText = categoryTitle;
+    titleEl.innerText = categorySets[categoryIndex-1].title;
 }
 
 function drawAxis() {
@@ -338,10 +338,10 @@ function makeGroupVisible(group, showIt) {
 function drawText1(font) {
     setTitle();
     var displayLabels = [];
-    for (var i = 0; i < categoryLabels.length; i++) {
-        displayLabels = extractLabels(categoryLabels[i].labels);
+    for (var i = 0; i < categorySets[categoryIndex-1].positions.length; i++) {
+        displayLabels = extractLabels(categorySets[categoryIndex-1].positions[i].labels);
 
-        drawTextPos(font, categoryLabels[i].fontsize, _fontColorYellow, displayLabels, i, _groupText1);
+        drawTextPos(font, categorySets[categoryIndex-1].positions[i], _fontColorYellow, displayLabels, i, _groupText1);
     }
 
     scene.add(_groupText1);
@@ -431,11 +431,14 @@ var posParms = [{
     }
 ];
 
-function drawTextPos(font, fontSize, fontColor, texts, posId, group) {
+function drawTextPos(font, config, fontColor, texts, posId, group) {
+    console.log('config fontsize: '+ config.fontsize);
+    console.log('texts leng:' + texts.length);
+
     for (var i = 0; i < texts.length; i++) {
         var geometry = new THREE.TextBufferGeometry(texts[i], {
             font: font,
-            size: fontSize,
+            size: config.fontsize,
             height: 0.2,
             curveSegments: 12,
             bevelEnabled: false,
@@ -463,20 +466,20 @@ function drawTextPos(font, fontSize, fontColor, texts, posId, group) {
         var pZ = posParms[indx].vec[2];
         var offset = posParms[indx].offset;
 
-        textMesh1.position.x = offset[0] * centerX + pX;
-        textMesh1.position.y = offset[1] * centerX + pY;
-        textMesh1.position.z = offset[2] * centerX + pZ;
+        textMesh1.position.x = offset[0] * centerX + pX + config.xOffset;
+        textMesh1.position.y = offset[1] * centerX + pY + config.yOffset;
+        textMesh1.position.z = offset[2] * centerX + pZ + config.zOffset;
 
         var posOffset = calcOffset(texts.length, i, posId);
 
         if (offset[2] != 0) {
-            textMesh1.position.y -= posOffset * 1.5 * fontSize;
+            textMesh1.position.y -= posOffset * 1.5 * config.fontsize;
         } else if (offset[1] != 0) {
-            textMesh1.position.z -= posOffset * 1.5 * fontSize;
+            textMesh1.position.z -= posOffset * 1.5 * config.fontsize;
         } else if (offset[0] != 0) {
-            textMesh1.position.y -= posOffset * 1.5 * fontSize;
+            textMesh1.position.y -= posOffset * 1.5 * config.fontsize;
         } else {
-            textMesh1.position.y -= posoffset * 1.5 * fontSize;
+            textMesh1.position.y -= posoffset * 1.5 * config.fontsize;
         }
 
         textMesh1.rotation.x = posParms[indx].rot[0];
