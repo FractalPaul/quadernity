@@ -58,7 +58,8 @@ var TWOPI = 2 * Math.PI;
 var PIhalf = Math.PI / 2;
 
 // document ready function call.
-(function() {
+(function () {
+    createCatButtons();
     initCamera();
     drawGeometry();
     setupRender();
@@ -99,6 +100,13 @@ function drawGeometry() {
     showAxis(configParms.drawAxis);
 
     loadFont();
+}
+
+function createCatButtons() {
+    for (var ci = 0; ci < categorySets.length; ci++) {
+        if (categorySets[ci].title !== 'Category Title')
+        createButton(categorySets[ci].title, ci);
+    }
 }
 
 function setupRender() {
@@ -143,7 +151,33 @@ function scaleCamera() {
 
 function setTitle() {
     var titleEl = document.getElementById('qtitle');
-    titleEl.innerText = categorySets[categoryIndex-1].title;
+    titleEl.innerText = categorySets[categoryIndex - 1].title;
+}
+
+function createButton(label, catIndex) {
+    var buttonContainer = document.getElementById('buttoncontainer');
+
+    var buttonnode = document.createElement('input');
+    buttonnode.setAttribute('type', 'button');
+    buttonnode.setAttribute('name', 'catButton' + catIndex);
+    buttonnode.setAttribute('value', label);
+    buttonnode.onclick = function () {
+        displayCategory(catIndex);
+    };
+    buttonContainer.appendChild(buttonnode);
+}
+
+function displayCategory(catIndex) {
+    categoryIndex = catIndex + 1;
+    displayLabels();
+}
+
+function displayLabels() {
+    if (_font !== undefined) {
+        drawText1(_font);
+    } else {
+        loadFont();
+    }
 }
 
 function drawAxis() {
@@ -323,7 +357,7 @@ function setGreenColor(newValue) {
 
 function loadFont() {
     var loader = new THREE.FontLoader();
-    loader.load('fonts/helvetiker_regular.typeface.json', function(font) {
+    loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
         _font = font;
         drawText1(font);
     });
@@ -338,10 +372,19 @@ function makeGroupVisible(group, showIt) {
 function drawText1(font) {
     setTitle();
     var displayLabels = [];
-    for (var i = 0; i < categorySets[categoryIndex-1].positions.length; i++) {
-        displayLabels = extractLabels(categorySets[categoryIndex-1].positions[i].labels);
+    _matText = [];
+    _geoText = [];
 
-        drawTextPos(font, categorySets[categoryIndex-1].positions[i], _fontColorYellow, displayLabels, i, _groupText1);
+    if (_groupText1 !== undefined) {
+        scene.remove(_groupText1);
+    }
+
+    _groupText1 = new THREE.Group();
+
+    for (var i = 0; i < categorySets[categoryIndex - 1].positions.length; i++) {
+        displayLabels = extractLabels(categorySets[categoryIndex - 1].positions[i].labels);
+
+        drawTextPos(font, categorySets[categoryIndex - 1].positions[i], _fontColorYellow, displayLabels, i, _groupText1);
     }
 
     scene.add(_groupText1);
@@ -432,8 +475,8 @@ var posParms = [{
 ];
 
 function drawTextPos(font, config, fontColor, texts, posId, group) {
-    console.log('config fontsize: '+ config.fontsize);
-    console.log('texts leng:' + texts.length);
+    // console.log('config fontsize: ' + config.fontsize);
+    // console.log('texts leng:' + texts.length);
 
     for (var i = 0; i < texts.length; i++) {
         var geometry = new THREE.TextBufferGeometry(texts[i], {
