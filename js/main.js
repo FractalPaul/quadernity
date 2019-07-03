@@ -49,7 +49,7 @@ var configParms = {
     endAngleB: 1.85, // Ellipse angle at the top for gap width.
     // rotateAnimation: false,
     // rotateReset: false,
-    drawAxis: true,
+    drawAxis: false,
     blueColor: 0x1f3fd4,
     greenColor: 0x8cd2b,
     maxLines: 5
@@ -426,9 +426,9 @@ var posParms = [{
     {
         id: 4,
         name: 'Left Small Inside Green',
-        vec: [-13, 2, -2],
+        vec: [-13, 0, -2],
         rot: [PIhalf, PIhalf, 0],
-        offset: [0, -0.5, 0]
+        offset: [0, -1, 0]
     },
     {
         id: 5,
@@ -440,9 +440,9 @@ var posParms = [{
     {
         id: 6,
         name: 'Right Small Inside Blue',
-        vec: [13, 2, 2],
+        vec: [13, 0, 2],
         rot: [-PIhalf, -PIhalf, 0],
-        offset: [0, -0.5, 0]
+        offset: [0, -1, 0]
     },
     {
         id: 7,

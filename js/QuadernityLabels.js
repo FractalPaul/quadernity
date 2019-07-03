@@ -15,155 +15,6 @@ var categoryIndex = 1; // Use this value to determine which Category Set (below)
 // 1 for the first Label Set, 2 for the second Label Set, 3 for the third, etc...
 
 var categorySets = [{
-        title: 'PTPR Labels',
-        categoryId: 2,
-        positions: [{
-                positionId: 1,
-                position: 'Outside Green lg L',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Female Subject RESTS',
-                    'in the low-lying Ground state:',
-                    'the undifferentiated Substance,',
-                    'the prime aether field.',
-                ]
-            },
-            {
-                positionId: 2,
-                position: 'Inside Blue lg L',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Male Subject RESTS',
-                    'in the Ground State,',
-                    'mingled-in with the',
-                    'unformed Substance.',
-                ]
-            },
-            {
-                positionId: 3,
-                position: 'Inside Blue sm L',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Male Subject Pushes His Object:', 
-                    'a seed or recorded Pattern',
-                    'that disturbs the quiescence',
-                    'of the prime aether field.',
-                ]
-            },
-            {
-                positionId: 4,
-                position: 'Inside Green sm L',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Female Subject Pulls/selects/singles-out',
-                    'a seed for',
-                    'inception/insemination/fertilization.',
-                    '',
-                    '',
-                ]
-            },
-            {
-                positionId: 5,
-                position: 'Front Seam',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'While Male RESTS, Female Subject TRANSITIONS.', 
-                    'Creating/OUTforming is the act of Substantiating a Structure.',
-                    'Patterning Matter is similar to gestation in pregnancy.',
-                    '',
-                    '',
-                ]
-            },
-            {
-                positionId: 6,
-                position: 'Inside Blue sm R',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Via sensory receptors,',
-                    'the Male Subject Pulls',
-                    'an impression of a',
-                    'Created/OUTformed expression.',
-                ]
-            },
-            {
-                positionId: 7,
-                position: 'Inside Green sm R',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Female PUSHES Her Object as a',
-                    'Created/OUTformed Particularity',
-                    'that conforms to boundary conditions',
-                    'specified by both the local INformables',
-                    'and the universal Creator.'
-                ]
-            },
-            {
-                positionId: 8,
-                position: 'Inside Green lg R',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'The fields/OUTside-spaces of Particularities',
-                    'interfere with the prime aether field',
-                    'or other subordinate fields.',
-                ]
-            },
-            {
-                positionId: 9,
-                position: 'Outside Blue lg R',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Male Subject PULLS/absorbs/observes',
-                    'field signatures of the OUTside-spaces',
-                    'interfering with His INside-space.',
-                    '',
-                    '',
-                ]
-            },
-            {
-                positionid: 10,
-                position: 'Back Gap',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Female RESTS.',
-                    'Her Particularities disintegrate into Ground state.',
-                    'Male Subject TRANSITIONS by recording',
-                    'His insights into the Akashic Records/Collective Consciousness,',
-                    'once again disturbing the peace/REST of Mother/Substance/Aether/Waters.',
-                ]
-            }
-        ]
-    },
-    {
         title: 'Quadernity Labels',
         categoryId: 1,
         positions: [{
@@ -311,6 +162,155 @@ var categorySets = [{
         ]
     },
     {
+        title: 'PTPR Labels',
+        categoryId: 2,
+        positions: [{
+                positionId: 1,
+                position: 'Outside Green lg L',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Female Subject RESTS',
+                    'in the low-lying Ground state:',
+                    'the undifferentiated Substance,',
+                    'the prime aether field.',
+                ]
+            },
+            {
+                positionId: 2,
+                position: 'Inside Blue lg L',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Male Subject RESTS',
+                    'in the Ground State,',
+                    'mingled-in with the',
+                    'unformed Substance.',
+                ]
+            },
+            {
+                positionId: 3,
+                position: 'Inside Blue sm L',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Male Subject Pushes His Object:',
+                    'a seed or recorded Pattern',
+                    'that disturbs the quiescence',
+                    'of the prime aether field.',
+                ]
+            },
+            {
+                positionId: 4,
+                position: 'Inside Green sm L',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Female Subject Pulls/selects/singles-out',
+                    'a seed for',
+                    'inception/insemination/fertilization.',
+                    '',
+                    '',
+                ]
+            },
+            {
+                positionId: 5,
+                position: 'Front Seam',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'While Male RESTS, Female Subject TRANSITIONS.',
+                    'Creating/OUTforming is the act of Substantiating a Structure.',
+                    'Patterning Matter is similar to gestation in pregnancy.',
+                    '',
+                    '',
+                ]
+            },
+            {
+                positionId: 6,
+                position: 'Inside Blue sm R',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Via sensory receptors,',
+                    'the Male Subject Pulls',
+                    'an impression of a',
+                    'Created/OUTformed expression.',
+                ]
+            },
+            {
+                positionId: 7,
+                position: 'Inside Green sm R',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Female PUSHES Her Object as a',
+                    'Created/OUTformed Particularity',
+                    'that conforms to boundary conditions',
+                    'specified by both the local INformables',
+                    'and the universal Creator.'
+                ]
+            },
+            {
+                positionId: 8,
+                position: 'Inside Green lg R',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'The fields/OUTside-spaces of Particularities',
+                    'interfere with the prime aether field',
+                    'or other subordinate fields.',
+                ]
+            },
+            {
+                positionId: 9,
+                position: 'Outside Blue lg R',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Male Subject PULLS/absorbs/observes',
+                    'field signatures of the OUTside-spaces',
+                    'interfering with His INside-space.',
+                    '',
+                    '',
+                ]
+            },
+            {
+                positionid: 10,
+                position: 'Back Gap',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Female RESTS.',
+                    'Her Particularities disintegrate into Ground state.',
+                    'Male Subject TRANSITIONS by recording',
+                    'His insights into the Akashic Records/Collective Consciousness,',
+                    'once again disturbing the peace/REST of Mother/Substance/Aether/Waters.',
+                ]
+            }
+        ]
+    },
+    {
         title: 'Labels from Various Scriptures',
         categoryId: 3,
         positions: [{
@@ -442,7 +442,7 @@ var categorySets = [{
                     'He divides the light from darkness',
                     '(establishes boundaries).',
                     'He names Day and Night (and the 10K things)',
-                    'for recall (appending memories in time).' 
+                    'for recall (appending memories in time).'
                 ]
             },
             {
@@ -577,7 +577,7 @@ var categorySets = [{
                     'Reactions to meanings made',
                     'emanate as field projections',
                     'throughout the aether/waters,',
-                    'producing the OUTside-space', 
+                    'producing the OUTside-space',
                     'of each Particularity.',
                 ]
             },
@@ -610,7 +610,7 @@ var categorySets = [{
                     'Future rounds of stimuli provide pain/pleasure',
                     'for the INformables, encouraging them',
                     'to cease reacting to the past (M)',
-                    'and projecting into the future (U)', 
+                    'and projecting into the future (U)',
                     'their small-minded interpretations (A).'
                 ]
             }
@@ -686,7 +686,7 @@ var categorySets = [{
                     'Event horizon;',
                     'oscillation gives',
                     'Structure to Substance;',
-                    'Patterns Matter,', 
+                    'Patterns Matter,',
                     'as seen in cymatics.',
                 ]
             },
