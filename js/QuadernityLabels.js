@@ -17,6 +17,7 @@ var categoryIndex = 1; // Use this value to determine which Category Set (below)
 var categorySets = [{
         title: 'Quadernity Labels',
         categoryId: 1,
+        visible: true,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
@@ -164,6 +165,7 @@ var categorySets = [{
     {
         title: 'PTPR Labels',
         categoryId: 2,
+        visible: true,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
@@ -313,6 +315,7 @@ var categorySets = [{
     {
         title: 'Labels from Various Scriptures',
         categoryId: 3,
+        visible: true,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
@@ -465,6 +468,7 @@ var categorySets = [{
     {
         title: 'Labels from Consciousness Studies Including Yogic Philosophy',
         categoryId: 4,
+        visible: true,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
@@ -619,6 +623,7 @@ var categorySets = [{
     {
         title: 'Labels from Physics According to Measurability by Human Standards',
         categoryId: 5,
+        visible: true,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
@@ -768,6 +773,7 @@ var categorySets = [{
     {
         title: 'Dielectric-Magnetic Field Labels',
         categoryId: 6,
+        visible: false,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
@@ -916,6 +922,7 @@ var categorySets = [{
     {
         title: 'Category Title',
         categoryId: 7,
+        visible: true,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
@@ -1063,6 +1070,7 @@ var categorySets = [{
     {
         title: 'Category Title',
         categoryId: 8,
+        visible: true,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
@@ -1210,6 +1218,7 @@ var categorySets = [{
     {
         title: 'Category Title',
         categoryId: 9,
+        visible: true,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',

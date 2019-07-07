@@ -104,8 +104,8 @@ function drawGeometry() {
 
 function createCatButtons() {
     for (var ci = 0; ci < categorySets.length; ci++) {
-        if (categorySets[ci].title !== 'Category Title')
-        createButton(categorySets[ci].title, ci);
+        if (categorySets[ci].visible)
+            createButton(categorySets[ci].title, ci);
     }
 }
 
