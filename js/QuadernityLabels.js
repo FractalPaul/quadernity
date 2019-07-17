@@ -2,16 +2,16 @@
  * Quadernity Model Label Descriptions.
  * Author: Paul T. Saletzki
  * Date: March 2019
- * This one file represents just one category only.  
+ * This one file represents just one category only. 
  * Please edit this file to add or remove labels to each position for this category.
- * The Labels below represent the positions on the model.  You have control over which lines get displayed and how many.
+ * The Labels below represent the positions on the model. You have control over which lines get displayed and how many.
  * Labels can be added with a 'some verbage here...' around the label to denote the start and end of the label. 
  * Blank labels are permitted: ''
  * Each Label must be demarked with a comma ,
  * Font Size can be adjusted from 1 up to 25.
  */
 
-var categoryIndex = 1; // Use this value to determine which Category Set (below) is displayed on the model.
+var categoryIndex = 2; // Use this value to determine which Category Set (below) is displayed on the model.
 // 1 for the first Label Set, 2 for the second Label Set, 3 for the third, etc...
 
 var categorySets = [{
@@ -174,10 +174,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject RESTS',
-                    'in the low-lying Ground state:',
-                    'the undifferentiated Substance,',
-                    'the prime aether field.',
+                    'Female TRANSITIONS.',
+                    'The Structuring of Substance',
+                    'is similar to gestation in pregnancy.',
+                    '',
                 ]
             },
             {
@@ -188,8 +188,8 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Subject RESTS',
-                    'in the Ground State,',
+                    'Male RESTS',
+                    'as a Pattern of potentiality,',
                     'mingled-in with the',
                     'unformed Substance.',
                 ]
@@ -202,10 +202,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Subject Pushes His Object:',
-                    'a seed or recorded Pattern',
-                    'that disturbs the quiescence',
-                    'of the prime aether field.',
+                    'Male RESTS',
+                    'as His seed/Pattern',
+                    'influences the otherwise',
+                    'quiescent prime aether field.',
                 ]
             },
             {
@@ -213,14 +213,12 @@ var categorySets = [{
                 position: 'Inside Green sm L',
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                yOffset: 5, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Pulls/selects/singles-out',
-                    'a seed for',
-                    'inception/insemination/fertilization.',
-                    '',
-                    '',
+                    'Female TRANSITIONS,',
+                    'organizing Matter',
+                    'according to Pattern.'
                 ]
             },
             {
@@ -231,11 +229,11 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'While Male RESTS, Female Subject TRANSITIONS.',
-                    'Creating/OUTforming is the act of Substantiating a Structure.',
-                    'Patterning Matter is similar to gestation in pregnancy.',
-                    '',
-                    '',
+                    'Male PULLS, Female PUSHES.',
+                    'Creating/OUTforming',
+                    'requires an Observer',
+                    'with sensory receptors',
+                    'to receive the output/offspring.',
                 ]
             },
             {
@@ -243,12 +241,12 @@ var categorySets = [{
                 position: 'Inside Blue sm R',
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                yOffset: 3, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 3, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Via sensory receptors,',
-                    'the Male Subject Pulls',
-                    'an impression of a',
+                    'Male TRANSITIONS,',
+                    'making some meaning',
+                    'out of His impression of the',
                     'Created/OUTformed expression.',
                 ]
             },
@@ -258,13 +256,13 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 3, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female PUSHES Her Object as a',
-                    'Created/OUTformed Particularity',
-                    'that conforms to boundary conditions',
-                    'specified by both the local INformables',
-                    'and the universal Creator.'
+                    'Female RESTS as Matter, or as a',
+                    'Created/OUTformed Particularity,',
+                    'bound by conditions that are',
+                    'specified by the local INformables',
+                    'and the universal omniscience.'
                 ]
             },
             {
@@ -275,9 +273,11 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'The fields/OUTside-spaces of Particularities',
-                    'interfere with the prime aether field',
-                    'or other subordinate fields.',
+                    'Female RESTS',
+                    'as the OUTside-spaces of',
+                    'Particularities reflect ',
+                    'the reactions of their Observers.',
+
                 ]
             },
             {
@@ -288,9 +288,9 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Subject PULLS/absorbs/observes',
-                    'field signatures of the OUTside-spaces',
-                    'interfering with His INside-space.',
+                    'Male TRANSITIONS,',
+                    'recording His insights',
+                    'into the Akashic Records/Collective Consciousness.',
                     '',
                     '',
                 ]
@@ -303,11 +303,9 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female RESTS.',
-                    'Her Particularities disintegrate into Ground state.',
-                    'Male Subject TRANSITIONS by recording',
-                    'His insights into the Akashic Records/Collective Consciousness,',
-                    'once again disturbing the peace/REST of Mother/Substance/Aether/Waters.',
+                    'Female PULLS/selects/singles-out a seed',
+                    'for inception/insemination/fertilization.',
+                    'Male PUSHES his Creative seed.',
                 ]
             }
         ]
@@ -324,9 +322,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Tao, the Waters,',
-                    'gateway to',
-                    'Heaven and Earth.',
+                    'Tao, the Waters, gateway to Heaven and Earth.',
+                    'Virgin Mother is with child.',
+                    'Heat/movement/desire arises in',
+                    'that One who breathes windlessly.',
                     '',
                 ]
             },
@@ -338,9 +337,9 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'The Word that was with God.',
-                    'The Word that was God.',
-                    '(potentiality)',
+                    'The Word that was with God',
+                    'and was God',
+                    '(mingled-in as potentiality).',
                     '',
                 ]
             },
@@ -352,11 +351,7 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Spirit-Breath moves',
-                    'on the face of the waters;',
-                    'heat/movement/desire',
-                    'arises in that One',
-                    'who breathes windlessly.'
+                    'Let there be light.',
                 ]
             },
             {
@@ -365,12 +360,10 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Omnipotent Female/Mother',
-                    'lies low, carries yin.',
-                    'Non-resistant receptivity.',
-                    '',
+                    'lies low (in lowly manger).',
                 ]
             },
             {
@@ -381,24 +374,27 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Virgin Mother is with child.',
-                    '',
-                    '',
+                    '1) The Virgin Birth',
+                    'And there is light, the offspring of Mary,',
+                    'Sun/Light/Sol/Soul/Christ is',
+                    'born of a Virgin, yet untouched by man',
+                    '2+) Emergence of Matter.',
+                    '(or reactions of the waking mind).',
                     '',
                 ]
             },
             {
                 positionId: 6,
                 position: 'Inside Blue sm R',
-                fontsize: 2,
+                fontsize: 1.75,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                yOffset: 5, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 3, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    '"Let there be light."',
-                    '',
-                    '',
-                    '',
+                    'Father/Observer sees the light',
+                    'that it is good.',
+                    'He divides content from context',
+                    'and names the 10,000 things.',
                 ]
             },
             {
@@ -407,13 +403,11 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'And there is light.',
-                    'Her offspring is the',
-                    'Sun/Light/Sol/Soul/Christ',
-                    'born of a Virgin, untouched by man',
-                    '(or reactions of the waking mind).'
+                    'Observed is as a solute, ',
+                    'fallen from solution/grace.',
+                    'Chrystal, Christ.'
                 ]
             },
             {
@@ -424,10 +418,11 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Emanating Interference Patterns',
-                    'are the angles/angels',
-                    'that fly the heavens',
-                    'to INform Creator-God.',
+                    'Reactions of Observer emanate',
+                    'as interference Patterns;',
+                    'these angles/angels',
+                    'enter the heavens,',
+                    'or outside-spaces.',
                 ]
             },
             {
@@ -438,28 +433,26 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Father Sky, Father who art in Heaven,',
-                    'Omniscient Observer/Overseer',
-                    'God (Creator of Heaven and Earth)',
-                    'sees the light, that it is good.',
-                    'He divides the light from darkness',
-                    '(establishes boundaries).',
-                    'He names Day and Night (and the 10K things)',
-                    'for recall (appending memories in time).'
+                    'Father Sky/Father who art in Heaven/',
+                    'the Omniscient Observer/,',
+                    'Overseer of this field-in-flux/',
+                    'the Environment disturbed by local Observers.',
                 ]
             },
             {
                 positionId: 10,
                 position: 'Back Gap',
-                fontsize: 2,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Re-Solution:',
-                    'Solutes and Solvent',
-                    'become again a',
-                    'mingled-in Solution.',
+                    '1) Spirit/Breath moves on the face of the waters/',
+                    'Virgin Mary/non-resistant carrier of yin.',
+                    '2+) Re-Solution: Solutes and Solvent',
+                    'become again a mingled-in Solution.',
+                    '',
+                    '',
                     '',
                 ]
             }
@@ -477,9 +470,8 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'N/A since patriarchal times',
-                    '',
-                    '',
+                    'Shakti',
+                    'Prakriti',
                     '',
                 ]
             },
@@ -491,10 +483,11 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Collective consciousness,',
-                    'Unconscious aspect of waking mind,',
-                    'Turiya.',
-                    '',
+                    'Brahman, Purusha,',
+                    'Mind of the universe that manages all things;',
+                    'without individual vantage point,',
+                    'self and other remain indifferentiated.',
+                    'Instinctive, Sleeping, Unconscious Mind (M)'
                 ]
             },
             {
@@ -505,10 +498,8 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Deeply Sleeping Mind (M),',
-                    'without individual vantage point',
-                    'for dividing self from other,',
-                    'resonates with the collective state.',
+                    'Dreaming Mind (U),',
+                    'uncensored, impulsive, emotive. ',
                 ]
             },
             {
@@ -516,10 +507,12 @@ var categorySets = [{
                 position: 'Inside Green sm L',
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                yOffset: 2, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'N/A since patriarchal times.',
+                    'The great Intelligence',
+                    'that produces all things.',
+                    'Coordinator of internal Parts.',
                     '',
                     '',
                     '',
@@ -528,13 +521,13 @@ var categorySets = [{
             {
                 positionId: 5,
                 position: 'Front Seam',
-                fontsize: 2,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Sensory stimuli at boundary,',
-                    'Re-Minds Waking Consciousness.',
+                    'Sensory stimuli at boundary',
+                    're-Minds the wakeful consciousness.',
                     '',
                     '',
                 ]
@@ -542,16 +535,16 @@ var categorySets = [{
             {
                 positionId: 6,
                 position: 'Inside Blue sm R',
-                fontsize: 2,
+                fontsize: 1.75,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                yOffset: 5, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 2, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Attention is "Paid."',
-                    'Receptivity of the',
-                    'Dreaming Mind (U)',
-                    'constructs impressions from',
-                    'internal and external stimuli.',
+                    'Attention is "paid" to sensations.',
+                    'As quantities are imagined',
+                    'in the waking mind (A)',
+                    'meanings are deduced',
+                    'and qualia is experienced.',
                 ]
             },
             {
@@ -560,14 +553,14 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'That which is seen/',
                     'perceived/measured/calculated/',
-                    'rationalized/divided/',
-                    'makes a Particularity and',
-                    'brings it into the INside-space',
-                    'of the INformable.'
+                    'rationalized/divided.',
+                    'This Particularity becomes part of',
+                    'the INside-space of the Observer.',
+                    ''
                 ]
             },
             {
@@ -578,7 +571,7 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Reactions to meanings made',
+                    'Reactions to those meanings made',
                     'emanate as field projections',
                     'throughout the aether/waters,',
                     'producing the OUTside-space',
@@ -588,34 +581,31 @@ var categorySets = [{
             {
                 positionId: 9,
                 position: 'Outside Blue lg R',
-                fontsize: 2,
+                fontsize: 1.75,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Re-cognition by Waking Mind (A)',
-                    'of qualia re-presenting',
-                    'the quantity encountered.',
-                    'Patterns are re-viewed/re-cognized',
-                    'in mind, not in spatial context.',
+                    'Patterns are re-cognized, re-viewed, compared, contrasted.',
+                    'Memories are accessed via vibratory resonance,',
+                    'not from brain, but from',
+                    'holographic Consciousness/the Akashic Records/Turiya/',
+                    'INformative waves that are ever-present in space.',
                 ]
             },
             {
                 positionId: 10,
                 position: 'Back Gap',
-                fontsize: 2,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Effects of collective field distortions',
-                    'are brought back into balance via the',
-                    're-seeding/INforming of Creatable Substance (Turiya).',
-                    'Future rounds of stimuli provide pain/pleasure',
-                    'for the INformables, encouraging them',
-                    'to cease reacting to the past (M)',
-                    'and projecting into the future (U)',
-                    'their small-minded interpretations (A).'
+                    'Effects of the collective field disturbances',
+                    'are fed-forward to the Concealed Unity/Shakti-Brahman',
+                    'via the re-seeding/INforming of Creatable Substance.',
+                    ' ',
+                    ''
                 ]
             }
         ]
@@ -632,10 +622,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Raw Substance,',
-                    'Super-Conducting Plasma,',
-                    'Super-Saturated Solution,',
-                    'Luminiferous Aether.',
+                    'Raw Substance',
+                    'Super-Conducting Plasma',
+                    'Super-Saturated Solution',
+                    'Luminiferous Aether',
                 ]
             },
             {
@@ -647,9 +637,9 @@ var categorySets = [{
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Holographic Space Memory Network,',
-                    'an emanating field that both',
-                    'OUTforms fractally',
-                    'and INforms holographically.',
+                    'an emanating field that',
+                    'INforms holographically.',
+                    '',
                 ]
             },
             {
@@ -658,12 +648,12 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 1, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Probabilities',
-                    'without position',
-                    'or momentum.',
-                    'Aptitude, the tendency to ...',
+                    'The probability to become...',
+                    '(without position or momentum).',
+                    'An aptitude, a tendency to ...',
+                    '',
                 ]
             },
             {
@@ -672,42 +662,42 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Center of mass,',
                     'INside-space,',
-                    'the centripetal orientation',
-                    'of a bi-polar toroid.',
+                    'centripetal acceleration',
+                    'within a bi-polar toroid.',
                 ]
             },
             {
                 positionId: 5,
                 position: 'Front Seam',
-                fontsize: 4,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Event horizon;',
-                    'oscillation gives',
-                    'Structure to Substance;',
-                    'Patterns Matter,',
-                    'as seen in cymatics.',
+                    'oscillation gives Structure to Substance.',
+                    'Patterns Matter, as seen in cymatics.',
+                    '',
+                    '',
                 ]
             },
             {
                 positionId: 6,
                 position: 'Inside Blue sm R',
                 fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                xOffset: -3, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 2, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Observers, algorithms, gas traps',
-                    'photon absorbers, charged particles',
-                    'attendees in aether field, etc.',
-                    'Sequence temporal experiences',
-                    'and quantize Particularities.',
+                    'The Observers, algorithms, gas traps',
+                    'photon absorbers, charged particles or',
+                    'attendees in the aether field, etc. that',
+                    'quantize Particularities in space and ',
+                    'sequence experiences in time.',
                 ]
             },
             {
@@ -715,57 +705,56 @@ var categorySets = [{
                 position: 'Inside Green sm R',
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                yOffset: -3, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 3, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Fractal organizations,',
                     'Solutes falling from Solution,',
-                    'Fields forming in Aether,',
-                    'dividing INside and OUTside spaces.'
+                    'fields forming in Aether,',
+                    'boundaries dividing',
+                    'INside and OUTside spaces.',
                 ]
             },
             {
                 positionId: 8,
                 position: 'Inside Green lg R',
-                fontsize: 4,
+                fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Pushes Object.',
-                    'radiation emitters expand the',
-                    'outside-space of',
-                    'a Particularity.',
+                    'Reflecting the reactions of their Observers,',
+                    'Particularities appear to emit radiation',
+                    'in/as their outside-space.',
                 ]
             },
             {
                 positionId: 9,
                 position: 'Outside Blue lg R',
-                fontsize: 4,
+                fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Atmospheres as Observers,',
-                    'deBroglie waves,',
-                    'OUTside Spaces of field emitters.',
-                    'Global, non-local perspective.',
+                    'Environments/atmospheres as Observers;',
+                    'deBroglie waves, pilot waves;',
+                    'global, non-local perspective.',
                     '',
                 ]
             },
             {
                 positionId: 10,
                 position: 'Back Gap',
-                fontsize: 4,
+                fontsize: 2.75,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Energy of mass (inertia of INside space)',
-                    'is returned through the disintegration',
-                    '(entropy) of Matter-Patterns',
-                    'and the RESToration of quiescent,',
-                    'indeterminate INformed-Creatable.',
+                    'Energy of mass (inertia of relationship) is returned in the',
+                    'disintegration (entropy) of Matter-Patterns.',
+                    'RESToration of the quiescent, indeterminate INformed-Creatable.',
+                    '',
+                    '',
                 ]
             }
         ]
@@ -920,7 +909,7 @@ var categorySets = [{
         ]
     },
     {
-        title: 'Category Title',
+        title: 'Mathematical Labels',
         categoryId: 7,
         visible: true,
         positions: [{
@@ -931,10 +920,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Rests',
-                    'in the Ground state',
-                    'Line 3 long text offset',
-                    'Line 4 long text offset',
+                    'Everything 1/0',
+                    'Raw Substance is unlimited.',
+                    '',
+                    '',
                 ]
             },
             {
@@ -945,10 +934,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Subject Rests',
-                    'in the Ground State',
-                    'Line 3 long text offset',
-                    'Line 4 long text offset',
+                    'Nothing 0/1',
+                    'Consciousness has no self',
+                    'or distinct vantage point.',
+                    '',
                 ]
             },
             {
@@ -959,10 +948,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Object Pulled;',
-                    'the seed is selected',
-                    'from the Ground',
-                    'of possibilities.',
+                    'Powers of base .618...',
+                    '',
+                    '',
+                    '',
                 ]
             },
             {
@@ -971,26 +960,26 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Pulls,',
-                    'selecting Male seed:',
-                    'inception/insemination/',
-                    'fertilization',
+                    'The internal/pre-spatial,',
+                    'hierarchical dimensions:',
+                    'within/below the',
+                    'central unit 1/1.',
                 ]
             },
             {
                 positionId: 5,
                 position: 'Front Seam',
-                fontsize: 4,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Transitions,',
-                    '(producing Her Object, gestation).',
-                    'Male Subject',
-                    'continues to Rest.',
+                    'Sq.rt. of +1 is BOTH +1 and -1.',
+                    'Combined, they cancel to 0.',
+                    'Exponent of 0 on base of .618 or 1.618',
+                    'makes the central unit 1/1.',
                 ]
             },
             {
@@ -1001,10 +990,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Object Pulls',
-                    '(via physical sensory receptors)',
-                    'an impression of the',
-                    'Created/OUTformed content.',
+                    'The one who ',
+                    'counts and discounts.',
+                    '',
+                    '',
                 ]
             },
             {
@@ -1013,62 +1002,62 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Object',
-                    'gets Pushed/OUTformed',
-                    '(inside-space and boundary',
-                    'of a Particularity)',
+                    'The 10,000 things',
+                    'that temporarily express',
+                    'the diversity of 1/1.',
+                    '',
                 ]
             },
             {
                 positionId: 8,
                 position: 'Inside Green lg R',
-                fontsize: 4,
+                fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Pushes',
-                    'Object and expands the',
-                    'outside-space of a',
-                    'Particularity.',
+                    'The external/spatial',
+                    'hierarchical dimensions',
+                    'outside/beyond the unit 1/1.',
+                    '',
                 ]
             },
             {
                 positionId: 9,
                 position: 'Outside Blue lg R',
-                fontsize: 4,
+                fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    '1) Male Object Transitions,',
-                    'producing local reactions;',
-                    '2) Male Subject (Environment)',
-                    'Pulls/receives data (global',
-                    'non-local reconfiguration.)',
+                    'Powers of base 1.618...',
+                    '',
+                    '',
+                    '',
+                    '',
                 ]
             },
             {
                 positionId: 10,
                 position: 'Back Gap',
-                fontsize: 4,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Objects disintegrate',
-                    'into Ground (mingled-in).',
-                    'Male Subject Transitions,',
-                    'self-sacrificing or ',
-                    'disrupting the Ground state.',
+                    'Sq.rt. of -1,',
+                    'is NEITHER +1 nor -1;',
+                    'indeterminacy, 0/0.',
+                    '',
+                    '',
                 ]
             }
         ]
     },
     {
-        title: 'Category Title',
+        title: 'Domains and Relationships',
         categoryId: 8,
         visible: true,
         positions: [{
@@ -1079,10 +1068,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2) 
                 labels: [
-                    'Female Subject Rests',
-                    'in the Ground state',
-                    'Line 3 long text offset',
-                    'Line 4 long text offset',
+                    'Upper Quadrants',
+                    'Metaphysical Comain',
+                    '',
+                    '',
                 ]
             },
             {
@@ -1093,10 +1082,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Subject Rests',
-                    'in the Ground State',
-                    'Line 3 long text offset',
-                    'Line 4 long text offset',
+                    'Upper Quadrants',
+                    'Metaphysical Domain',
+                    '',
+                    '',
                 ]
             },
             {
@@ -1107,10 +1096,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Object Pulled;',
-                    'the seed is selected',
-                    'from the Ground',
-                    'of possibilities.',
+                    'Upper Quadrants',
+                    'Metaphysical Domain',
+                    '',
+                    '',
                 ]
             },
             {
@@ -1121,24 +1110,24 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Pulls,',
-                    'selecting Male seed:',
-                    'inception/insemination/',
-                    'fertilization',
+                    'Upper Quadrants',
+                    'Metaphysical Domain',
+                    '',
+                    '',
                 ]
             },
             {
                 positionId: 5,
                 position: 'Front Seam',
-                fontsize: 4,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Transitions,',
-                    '(producing Her Object, gestation).',
-                    'Male Subject',
-                    'continues to Rest.',
+                    'Public Daytime Relationship',
+                    'Male Pulls, Female Pushes',
+                    '',
+                    '',
                 ]
             },
             {
@@ -1149,10 +1138,10 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Male Object Pulls',
-                    '(via physical sensory receptors)',
-                    'an impression of the',
-                    'Created/OUTformed content.',
+                    'Lower Quadrants',
+                    'Physical Domain',
+                    '',
+                    '',
                 ]
             },
             {
@@ -1163,54 +1152,54 @@ var categorySets = [{
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Object',
-                    'gets Pushed/OUTformed',
-                    '(inside-space and boundary',
-                    'of a Particularity)',
+                    'Lower Quadrants',
+                    'Physical Domain',
+                    '',
+                    '',
                 ]
             },
             {
                 positionId: 8,
                 position: 'Inside Green lg R',
-                fontsize: 4,
+                fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Subject Pushes',
-                    'Object and expands the',
-                    'outside-space of a',
-                    'Particularity.',
+                    'Lower Quadrants',
+                    'Physical Domain',
+                    '',
+                    '',
                 ]
             },
             {
                 positionId: 9,
                 position: 'Outside Blue lg R',
-                fontsize: 4,
+                fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    '1) Male Object Transitions,',
-                    'producing local reactions;',
-                    '2) Male Subject (Environment)',
-                    'Pulls/receives data (global',
-                    'non-local reconfiguration.)',
+                    'Lower Quadrants',
+                    'Physical Domain',
+                    '',
+                    '',
+                    '',
                 ]
             },
             {
                 positionId: 10,
                 position: 'Back Gap',
-                fontsize: 4,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
-                    'Female Objects disintegrate',
-                    'into Ground (mingled-in).',
-                    'Male Subject Transitions,',
-                    'self-sacrificing or ',
-                    'disrupting the Ground state.',
+                    'Private Nighttime Relationship',
+                    'Female Pulls, Male Pushes.',
+                    '',
+                    '',
+                    '',
                 ]
             }
         ]
@@ -1218,7 +1207,7 @@ var categorySets = [{
     {
         title: 'Category Title',
         categoryId: 9,
-        visible: true,
+        visible: false,
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
