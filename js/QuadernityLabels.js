@@ -11,7 +11,7 @@
  * Font Size can be adjusted from 1 up to 25.
  */
 
-var categoryIndex = 2; // Use this value to determine which Category Set (below) is displayed on the model.
+var categoryIndex = 1; // Use this value to determine which Category Set (below) is displayed on the model.
 // 1 for the first Label Set, 2 for the second Label Set, 3 for the third, etc...
 
 var categorySets = [{
@@ -21,29 +21,29 @@ var categorySets = [{
         positions: [{
                 positionId: 1,
                 position: 'Outside Green lg L',
-                fontsize: 2,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Creatable',
-                    '',
-                    '',
-                    '',
+                    'ULQ',
+                    'Ground State',
+                    'Female',
                 ]
             },
             {
                 positionId: 2,
                 position: 'Inside Blue lg L',
-                fontsize: 2,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'INformed',
-                    '',
-                    '',
-                    '',
+                    'URQ',
+                    'Ground State',
+                    'Male',
                 ]
             },
             {
@@ -52,12 +52,12 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 2, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Creative',
-                    '',
-                    '',
-                    '',
+                    'URQ',
+                    'Passively Influential',
+                    'Potentially Structuring',
                 ]
             },
             {
@@ -65,26 +65,25 @@ var categorySets = [{
                 position: 'Inside Green sm L',
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                yOffset: 3, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4.5, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'INformer',
-                    '',
-                    '',
-                    '',
+                    'ULQ',
+                    'Selectively Substantiating',
+                    'Causally Subjective',
                 ]
             },
             {
                 positionId: 5,
                 position: 'Front Seam',
-                fontsize: 3,
+                fontsize: 4,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Creating/OUTforming',
-                    '',
-                    '',
+                    'Female to Male Exchange',
                     '',
                 ]
             },
@@ -93,13 +92,13 @@ var categorySets = [{
                 position: 'Inside Blue sm R',
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                yOffset: 2, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 3, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'INformable',
-                    '',
-                    '',
-                    '',
+                    'LLQ',
+                    'Individually Selective',
+                    'Casually Subjective',
                 ]
             },
             {
@@ -108,54 +107,52 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Created',
-                    '',
-                    '',
-                    '',
+                    'LRQ',
+                    'Objective Matter appears passive and',
+                    'static from external vantage points.',
                 ]
             },
             {
                 positionId: 8,
                 position: 'Inside Green lg R',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'INformative',
-                    '',
-                    '',
-                    '',
-                ]
-            },
-            {
-                positionId: 9,
-                position: 'Outside Blue lg R',
-                fontsize: 2,
-                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
-                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
-                labels: [
-                    'Creator',
-                    '',
-                    '',
-                    '',
-                    '',
-                ]
-            },
-            {
-                positionId: 10,
-                position: 'Back Gap',
                 fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
+                    'INformative',
+                    'LRQ',
+                    'Objective Patterns',
+                    'Reflectively Influential',
+                ]
+            },
+            {
+                positionId: 9,
+                position: 'Outside Blue lg R',
+                fontsize: 3,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Creator',
+                    'URQ',
+                    'Collectively Decisive',
+                    'Causally Subjective',
+                ]
+            },
+            {
+                positionId: 10,
+                position: 'Back Gap',
+                fontsize: 4,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
                     'INforming',
-                    '',
-                    '',
+                    'Male to Female Exchange',
                     '',
                     '',
                 ]
@@ -224,15 +221,14 @@ var categorySets = [{
             {
                 positionId: 5,
                 position: 'Front Seam',
-                fontsize: 2,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Male PULLS, Female PUSHES.',
                     'Creating/OUTforming',
-                    'requires an Observer',
-                    'with sensory receptors',
+                    'requires an Observer with sensory receptors',
                     'to receive the output/offspring.',
                 ]
             },
@@ -298,7 +294,7 @@ var categorySets = [{
             {
                 positionid: 10,
                 position: 'Back Gap',
-                fontsize: 2,
+                fontsize: 3,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
@@ -1069,7 +1065,7 @@ var categorySets = [{
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2) 
                 labels: [
                     'Upper Quadrants',
-                    'Metaphysical Comain',
+                    'Metaphysical Domain',
                     '',
                     '',
                 ]
@@ -1094,7 +1090,7 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 3, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Upper Quadrants',
                     'Metaphysical Domain',
@@ -1108,7 +1104,7 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 3, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Upper Quadrants',
                     'Metaphysical Domain',
@@ -1136,7 +1132,7 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 4, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Lower Quadrants',
                     'Physical Domain',
@@ -1150,7 +1146,7 @@ var categorySets = [{
                 fontsize: 2,
                 xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
                 yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
-                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                zOffset: 3, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Lower Quadrants',
                     'Physical Domain',
