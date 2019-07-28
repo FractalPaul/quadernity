@@ -59,6 +59,7 @@ var PIhalf = Math.PI / 2;
 
 // document ready function call.
 (function () {
+    extractQueryParameters();
     createCatButtons();
     initCamera();
     drawGeometry();
@@ -68,6 +69,30 @@ var PIhalf = Math.PI / 2;
 
     animate();
 })();
+
+function extractQueryParameters() {
+    // extract any query parameters from the URL to recieve the Category Index if there.
+    var parms = getUrlVars();
+    if (parms) {
+        var ciParm = parms['ci'];
+
+        if (!ciParm)
+            ciParm = parms['index'];
+        if (!ciParm)
+            ciParm = parms['catindex'];
+        if (ciParm)
+            categoryIndex = Number(ciParm);
+    }
+    console.log('ci:' + categoryIndex);
+}
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+    });
+    return vars;
+}
 
 function initCamera() {
     camera = null;
@@ -150,6 +175,7 @@ function scaleCamera() {
 }
 
 function setTitle() {
+    console.log('set title cat index: ' + categoryIndex);
     var titleEl = document.getElementById('qtitle');
     titleEl.innerText = categorySets[categoryIndex - 1].title;
 }
