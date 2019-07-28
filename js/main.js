@@ -188,7 +188,8 @@ function createButton(label, catIndex) {
     buttonnode.setAttribute('name', 'catButton' + catIndex);
     buttonnode.setAttribute('value', label);
     buttonnode.onclick = function () {
-        displayCategory(catIndex);
+        document.location ='?ci=' + (catIndex + 1);
+        displayCategory(catIndex);      
     };
     buttonContainer.appendChild(buttonnode);
 }
