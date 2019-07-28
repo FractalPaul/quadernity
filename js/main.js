@@ -83,7 +83,7 @@ function extractQueryParameters() {
         if (ciParm)
             categoryIndex = Number(ciParm);
     }
-    console.log('ci:' + categoryIndex);
+    //console.log('ci:' + categoryIndex);
 }
 
 function getUrlVars() {
@@ -175,7 +175,7 @@ function scaleCamera() {
 }
 
 function setTitle() {
-    console.log('set title cat index: ' + categoryIndex);
+    //console.log('set title cat index: ' + categoryIndex);
     var titleEl = document.getElementById('qtitle');
     titleEl.innerText = categorySets[categoryIndex - 1].title;
 }
