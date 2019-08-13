@@ -156,8 +156,9 @@ function extractQueryParameters() {
             ciParm = parms['catindex'];
         if (ciParm)
             categoryIndex = Number(ciParm);
-    }
-  
+    } 
+    categoryIndex --;
+    
     //console.log('ci:' + categoryIndex);
 }
 
