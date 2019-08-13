@@ -139,7 +139,7 @@ var fontJSON = {"glyphs":{"ο":{"x_min":0,"x_max":712,"ha":815,"o":"m 356 -25 q 
     setupRender();
     scaleCamera();
     //setTitle();
-displayCategory(0);
+displayCategory(categoryIndex);
 
     animate();
 })();
@@ -157,6 +157,7 @@ function extractQueryParameters() {
         if (ciParm)
             categoryIndex = Number(ciParm);
     }
+  
     //console.log('ci:' + categoryIndex);
 }
 
