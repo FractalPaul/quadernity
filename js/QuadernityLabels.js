@@ -1199,10 +1199,161 @@ var categorySets = [{
                 ]
             }
         ]
+    }, 
+    {
+        title: 'deQ Labels',
+        categoryId: 9,
+        visible: true,
+        positions: [{
+                positionId: 1,
+                position: 'Outside Green lg L',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2) 
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2) 
+                labels: [
+                    'Female Ground state',
+                    '',
+                    'Energy as substance in its ',
+                    'rawest, most-diluted state.',
+                ]
+            },
+            {
+                positionId: 2,
+                position: 'Inside Blue lg L',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Male Ground State.',
+                    'Consciousness itself;',
+                    'no differentiated',
+                    'subject or object.',
+                ]
+            },
+            {
+                positionId: 3,
+                position: 'Inside Blue sm L',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Male "seed" inseminates.',
+                    '',
+                    'Qualtum of',
+                    'organization/consciousness',
+                ]
+            },
+            {
+                positionId: 4,
+                position: 'Inside Green sm L',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Female gestation,',
+                    'Psyche as the',
+                    'act/process of formation;',
+                    'in-forming matter.',
+                ]
+            },
+            {
+                positionId: 5,
+                position: 'Front Seam',
+                fontsize: 4,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Synergy that can be',
+                    'measured/appreciated',
+                    'is prehended by conscious agent.',
+                    '',
+                ]
+            },
+            {
+                positionId: 6,
+                position: 'Inside Blue sm R',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'INformable',
+                    'Observer/registrar',
+                    'of differences',
+                    'divides self from other.',
+                ]
+            },
+            {
+                positionId: 7,
+                position: 'Inside Green sm R',
+                fontsize: 2,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Created/OUTformed;',
+                    'particles, particularities;',
+                    'quantized energy/matter;',
+                    'entity/system.',
+                    '',
+                ]
+            },
+            {
+                positionId: 8,
+                position: 'Inside Green lg R',
+                fontsize: 4,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Language',
+                    'expressing information',
+                    'in context;',
+                    'fields.',
+                ]
+            },
+            {
+                positionId: 9,
+                position: 'Outside Blue lg R',
+                fontsize: 4,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Great Cosmic Democracy',
+                    'whole determines parts;',
+                    'omniscience, over-soul;',
+                    'collectively decisive.',
+                    '',
+                ]
+            },
+            {
+                positionId: 10,
+                position: 'Back Gap',
+                fontsize: 4,
+                xOffset: 0, // blue Axis line LEFT or RIGHT (-, 0, + such as 0.5 or -1.2)
+                yOffset: 0, // cyan Axis Line Vertical (-, 0, + such as 0.5 or -1.2)
+                zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
+                labels: [
+                    'Language conveys/relates',
+                    'information; synergy/relations',
+                    'generated/organized by processes',
+                    'of information exchange;',
+                    'indivisible coupling of Li with S.',
+                    '',
+                    '',
+                ]
+            }
+        ]
     },
     {
         title: 'Category Title',
-        categoryId: 9,
+        categoryId: 10,
         visible: false,
         positions: [{
                 positionId: 1,
