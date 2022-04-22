@@ -138,7 +138,7 @@ var categorySets = [{
                 zOffset: 0, // Red Axis line In or Out (-, 0, + such as 0.5 or -1.2)
                 labels: [
                     'Creator',
-                    'URQ',
+                    'LLQ',
                     'Collectively Decisive',
                     'Causally Subjective',
                 ]
